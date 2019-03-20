@@ -13,14 +13,16 @@ class Question extends React.Component { // eslint-disable-line react/prefer-sta
             type: props.type||'',
             description: props.description,
             variants:props.variants,
-            right:props.right
+            right:props.right,
+            isModified: false
         };
         this.changeType = this.changeType.bind(this);
         this.changeDescription = this.changeDescription.bind(this);
+        this.saveQuestion = this.saveQuestion.bind(this);
     }
 
-    saveQuestion = () =>{
-        this.props.saveQuestion(this.state);
+    saveQuestion () {
+        this.props.saveQuestion(this.props.number,this.state);
     }
     
     changeType(event){

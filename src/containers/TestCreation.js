@@ -14,6 +14,7 @@ class TestCreation extends React.Component { // eslint-disable-line react/prefer
             name: this.props.name,
             nameChanged: false
         };
+        
     }
     //id?
     //name
@@ -25,6 +26,7 @@ class TestCreation extends React.Component { // eslint-disable-line react/prefer
     };
 
     render() {
+        console.log(this.props)
         return (
             <article>
                 <label>
@@ -36,9 +38,10 @@ class TestCreation extends React.Component { // eslint-disable-line react/prefer
                 </button>
 
                 {this.props.id &&
-                    (<button >
-                        {"Add question"}
-                    </button>)
+                    (<button onClick={this.props.actions.addQuestion}>
+                        {"Add question sss"}
+                    </button>
+                    )
                 }
                 {
                     this.props.questions.map(
@@ -50,6 +53,7 @@ class TestCreation extends React.Component { // eslint-disable-line react/prefer
                         variants={question.variants}
                         right={question.right}
                         saveQuestion={this.props.saveQuestion}
+                        key = {idx}
                     />
                     ))
                 }
@@ -58,16 +62,6 @@ class TestCreation extends React.Component { // eslint-disable-line react/prefer
     }
 }
 
-// TestCreation.propTypes = {
-//     questions: PropTypes.arrayOf(PropTypes.object),
-
-//     // loading: PropTypes.bool,
-//     // error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
-//     // repos: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
-//     // onSubmitForm: PropTypes.func,
-//     // username: PropTypes.string,
-//     // onChangeUsername: PropTypes.func
-// };
 function mapStateToProps(state) {
     return {
         id:  state.testCreation.id,

@@ -7,11 +7,12 @@ import {
 	DELETE_QUESTION,
 	SEND_TEST    
 } from '../constants/ActionTypes';
+import {QUESTION_TYPES} from '../constants/Constants';
 
 // The initial state of the App
 const initialState = {
 	id:'1',
-	name:'',
+	name:QUESTION_TYPES.TEXT,
 	educationalProgram:'',
 	questions:[]
 };

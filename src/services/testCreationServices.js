@@ -16,14 +16,14 @@ export const createTest = (name) => {
     .then((response) => {
         console.log(response.status + " " + response.statusText);
         if (response.status == HttpStatus.CREATED) {
-            console.log('test_id:'+response.json().id);
-            return response.json();
+            return response.json()
+                .then((data) => {
+                    console.log('test_id:'+data.id);
+                    return data;
+                });
         } else {
             throw response;
         }
-    })
-    .then((data) => {
-        return data;
     })
     .catch((e) => {
         console.log(e);
@@ -31,8 +31,7 @@ export const createTest = (name) => {
 }
 
 export const modifyTest = (testId, title) => {
-    console.log("here");
-    fetch(API_BASE_URL+'tests/'+testId,
+    return fetch(API_BASE_URL+'tests/'+testId,
         {
             method: 'PUT',
             body: JSON.stringify({
@@ -53,7 +52,7 @@ export const modifyTest = (testId, title) => {
 }
 
 export const getQuestions = (testId) => {
-    fetch(API_BASE_URL+'/tests/'+testId+'/questions',
+    return fetch(API_BASE_URL+'/tests/'+testId+'/questions',
         {
             method: 'GET'
         }
@@ -62,7 +61,10 @@ export const getQuestions = (testId) => {
         console.log(response.status + " " + response.statusText);
         if (response.status == HttpStatus.OK) {
             console.log(response.json());
-            return response.json();
+            return response.json()
+                .then((data) => {
+                    return data;
+                });
         } else {
             throw response;
         }
@@ -73,7 +75,7 @@ export const getQuestions = (testId) => {
 }
 
 export const createQuestion = (testId, question) => {
-    fetch(API_BASE_URL+'/tests/'+testId+'/questions',
+    return fetch(API_BASE_URL+'/tests/'+testId+'/questions',
         {
             method: 'POST',
             body: JSON.stringify(question),
@@ -92,7 +94,7 @@ export const createQuestion = (testId, question) => {
 }
 
 export const modifyQuestion = (testId, questionNumber, question) => {
-    fetch(API_BASE_URL+'/tests/'+testId+'/questions/'+questionNumber,
+    return fetch(API_BASE_URL+'/tests/'+testId+'/questions/'+questionNumber,
         {
             method: 'PUT',
             body: JSON.stringify(question),
@@ -111,7 +113,7 @@ export const modifyQuestion = (testId, questionNumber, question) => {
 }
 
 export const deleteQuestion = (testId, questionNumber) => {
-    fetch(API_BASE_URL+'/tests/'+testId+'/questions/'+questionNumber,
+    return fetch(API_BASE_URL+'/tests/'+testId+'/questions/'+questionNumber,
         {
             method: 'DELETE'
         }
@@ -127,25 +129,3 @@ export const deleteQuestion = (testId, questionNumber) => {
     });
 }
 
-export const dummyCreateTest = (testId, question) => {
-    return fetch('http://www.mocky.io/v2/5c92bce63200005d006bd0d7',
-        {
-            method: 'PUT'
-        }
-    )
-    .then((response) => {
-        console.log(response.status + " " + response.statusText);
-        if (response.status == HttpStatus.CREATED) {
-            return response.json();
-        } else {
-            throw response;
-        }
-    })
-    .then((data) => {
-        console.log('test_id:'+data.id);
-        return data;
-    })
-    .catch((e) => {
-        console.log(e);
-    });
-}

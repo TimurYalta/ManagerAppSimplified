@@ -35,18 +35,19 @@ import * as testCreation from '../services/testCreationServices';
  * 
  * @return {object}    An action object with a type of CREATE_NEW_TEST
  */
-export const createNewTest = (name, educationalProgram) => {
-    return dispatch => {
-        dispatch(
-            {
-                type: CREATE_NEW_TEST, 
-                payload: [name, educationalProgram]
-            }
-        );
+export const createNewTest = (name) => {
+    return (dispatch) => {
         try {
-            dispatch(setId(testCreation.createTest(name)));
-        } catch(e) { }
-    };
+            testCreation.createTest(name)
+                .then((res)=>{
+                    dispatch(setId(res.id));
+                    dispatch({
+                        type: CREATE_NEW_TEST
+                    });
+                }
+            );
+        } catch(e) {}
+    }
 }
 
 export const setId = (id) => {
@@ -59,10 +60,8 @@ export const setId = (id) => {
 export const changeName = (name) => {
     return (dispatch,getState) => {
         try {
-            console.log("tried");
             testCreation.dummyModifyTest(getState().id, name)
             .then((res)=>{
-                console.log("here");
                 dispatch({
                     type: CHANGE_NAME,
                     payload: name

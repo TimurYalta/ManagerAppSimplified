@@ -34,7 +34,7 @@ class TestCreation extends React.Component { // eslint-disable-line react/prefer
         return (
             <div>
                 <button onClick={this.props.actions.createNewTest}>{"Create Test"}</button>>
-                {this.prop.id && <article>
+                {this.props.id && <article>
                     <label>
                         {'Enter the test name:'}
                     </label>

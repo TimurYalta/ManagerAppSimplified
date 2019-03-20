@@ -14,7 +14,8 @@ class TestCreation extends React.Component { // eslint-disable-line react/prefer
             name: this.props.name,
             nameChanged: false
         };
-        
+        this.changeName = this.changeName.bind(this);
+        this.submitNameChange = this.submitNameChange.bind(this);
     }
     //id?
     //name
@@ -25,15 +26,18 @@ class TestCreation extends React.Component { // eslint-disable-line react/prefer
         this.setState({ name: val, nameChanged });
     };
 
+    submitNameChange(){
+        this.props.actions.changeName(this.state.name);
+    }
+
     render() {
-        console.log(this.props)
         return (
             <article>
                 <label>
                     {'Enter the test name:'}
                 </label>
                 <input type="text" value={this.state.name} onChange={this.changeName} />
-                <button enabled={this.state.nameChanged}>
+                <button enabled={this.state.nameChanged} onClick ={this.submitNameChange}>
                     {"Save"}
                 </button>
 
@@ -46,15 +50,15 @@ class TestCreation extends React.Component { // eslint-disable-line react/prefer
                 {
                     this.props.questions.map(
                         (question, idx) => (
-                                <Question
-                        number={idx}
-                        type={question.type}
-                        description={question.description}
-                        variants={question.variants}
-                        right={question.right}
-                        saveQuestion={this.props.saveQuestion}
-                        key = {idx}
-                    />
+                        <Question
+                            number={idx}
+                            type={question.type}
+                            description={question.description}
+                            variants={question.variants}
+                            right={question.right}
+                            saveQuestion={this.props.actions.saveQuestion}
+                            key = {idx}
+                        />
                     ))
                 }
             </article>
@@ -81,16 +85,3 @@ export default connect(
     mapDispatchToProps
 )(TestCreation);
 
-
-// {this.props.questions.map(
-//     (question, idx) => (
-//             <Question
-//     number={idx}
-//     type={question.type}
-//     description={question.description}
-//     variants={question.variants}
-//     right={question.right}
-//     saveQuestion={this.props.saveQuestion}
-// />
-// ));
-// }

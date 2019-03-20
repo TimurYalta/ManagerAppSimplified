@@ -12,7 +12,7 @@ import {QUESTION_TYPES} from '../constants/Constants';
 // The initial state of the App
 const initialState = {
 	id:'1',
-	name:QUESTION_TYPES.TEXT,
+	name:'',
 	educationalProgram:'',
 	questions:[]
 };
@@ -39,7 +39,7 @@ function testCreationReducer(state = initialState, action) {
             
 		case ADD_QUESTION:
 			const newQuestion = {
-				type: '',
+				type: QUESTION_TYPES.TEXT,
 				description: '',
 				variants: [],
 				right:''

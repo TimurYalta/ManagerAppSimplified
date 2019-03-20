@@ -67,11 +67,11 @@ export const addQuestion = () => {
 }
 
 export const saveQuestion = (questionNumber, newQuestion) => {
-    return(dispatch) => {
+    return (dispatch) => {
         dispatch(
             {
                 type: SAVE_QUESTION,
-                payload: [questionNumber, newQuestion]
+                payload: {questionNumber, newQuestion}
             }
         );
         //TODO API call

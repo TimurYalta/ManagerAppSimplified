@@ -2,7 +2,7 @@ import API_BASE_URL from '../constants/ActionTypes';
 var HttpStatus = require('http-status-codes');
 
 export const getTests = () => {
-    fetch(API_BASE_URL+'/tests',
+    return fetch(API_BASE_URL+'/tests',
         {
             method: 'GET'
         }
@@ -11,7 +11,10 @@ export const getTests = () => {
         console.log(response.status + " " + response.statusText);
         if (response.status == HttpStatus.OK) {
             console.log(response.json());
-            return response.json();
+            return response.json()
+                .then((data) => {
+                    return data;
+                });
         } else {
             throw response;
         }
@@ -22,7 +25,7 @@ export const getTests = () => {
 }
 
 export const deleteTest = (testId) => {
-    fetch(API_BASE_URL+'/tests/' + testId,
+    return fetch(API_BASE_URL+'/tests/' + testId,
         {
             method: 'DELETE'
         }

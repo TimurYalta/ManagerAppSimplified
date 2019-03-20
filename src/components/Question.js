@@ -102,7 +102,6 @@ class Question extends React.Component { // eslint-disable-line react/prefer-sta
     }
 
     render() {
-        console.log(this.state)
         return (
             <div style={{border:'1px solid black',width:'50%'}}>
                 <h1>{this.props.number}</h1>

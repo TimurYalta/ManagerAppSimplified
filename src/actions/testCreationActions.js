@@ -25,6 +25,7 @@ import {
     SAVE_QUESTION
 } from '../constants/ActionTypes';
 
+import * as testCreation from '../services/testCreationServices';
 /**
  * Changes the input field of the form
  *
@@ -34,16 +35,19 @@ import {
  * 
  * @return {object}    An action object with a type of CREATE_NEW_TEST
  */
-export const createNewTest = (name, educationalProgram) => {
-    return(dispatch) => {
-        dispach(
-            {
-                type: CREATE_NEW_TEST, 
-                payload: [name, educationalProgram]
-            }
-        );
-        //TODO service API call
-    };
+export const createNewTest = (name) => {
+    return (dispatch) => {
+        try {
+            testCreation.createTest(name)
+                .then((res)=>{
+                    dispatch(setId(res.id));
+                    dispatch({
+                        type: CREATE_NEW_TEST
+                    });
+                }
+            );
+        } catch(e) {}
+    }
 }
 
 export const setId = (id) => {
@@ -54,10 +58,17 @@ export const setId = (id) => {
 }
 
 export const changeName = (name) => {
-    return {
-        type: CHANGE_NAME,
-        payload: name
-    };
+    return (dispatch,getState) => {
+        try {
+            testCreation.modifyTest(getState().testCreation.id, name)
+            .then((res)=>{
+                dispatch({
+                    type: CHANGE_NAME,
+                    payload: name
+                });}
+            );
+        } catch(e) {}
+    }
 }
 
 export const addQuestion = () => {
@@ -67,20 +78,25 @@ export const addQuestion = () => {
 }
 
 export const saveQuestion = (questionNumber, newQuestion) => {
-    return (dispatch) => {
-        dispatch(
-            {
-                type: SAVE_QUESTION,
-                payload: {questionNumber, newQuestion}
-            }
-        );
-        //TODO API call
+    return (dispatch, getState) => {
+        try{
+            console.log(getState());
+            testCreation.createQuestion(getState().testCreation.id, newQuestion)
+            .then(() => {
+                dispatch(
+                    {
+                        type: SAVE_QUESTION,
+                        payload: {questionNumber, newQuestion}
+                    }
+                );
+            });
+        } catch(e) {}
     };
 }
 
 export const deleteQuestion = (questionNumber) => {
     return(dispatch, getState) => {
-        const questionType = getState().testCreationReducer.questions[questionNumber].type;
+        const questionType = getState().testCreation.questions[questionNumber].type;
         if (questionType) {
             //TODO API call
         }
@@ -96,7 +112,7 @@ export const deleteQuestion = (questionNumber) => {
 
 export const sendTest = () => {
     return(dispatch, getState) => {
-        const id = getState().testCreationReducer.id;
+        const id = getState().testCreation.id;
         //TODO API call
 
         dispatch(

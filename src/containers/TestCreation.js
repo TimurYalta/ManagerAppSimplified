@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import * as TestCreationActions from '../actions/TestCreationActions';
+import * as testCreationActions from '../actions/testCreationActions';
 import { bindActionCreators } from 'redux';
 import Question from '../components/Question';
 // import './style.scss';
@@ -82,7 +82,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(TestCreationActions, dispatch)
+        actions: bindActionCreators(testCreationActions, dispatch)
     };
 }
 

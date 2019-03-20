@@ -19,7 +19,7 @@ class Question extends React.Component { // eslint-disable-line react/prefer-sta
         this.changeDescription = this.changeDescription.bind(this);
     }
 
-    saveQuestion = () =>{
+    saveQuestion () {
         this.props.saveQuestion(this.state);
     }
     

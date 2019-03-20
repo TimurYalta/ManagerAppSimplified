@@ -10,7 +10,7 @@ import {
 
 // The initial state of the App
 const initialState = {
-	id:'',
+	id:'1',
 	name:'',
 	educationalProgram:'',
 	questions:[]

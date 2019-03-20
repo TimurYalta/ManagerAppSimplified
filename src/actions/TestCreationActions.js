@@ -23,7 +23,7 @@ import {
     DELETE_QUESTION,
     SEND_TEST, 
     SAVE_QUESTION
-} from './constants';
+} from '../constants/ActionTypes';
 
 /**
  * Changes the input field of the form

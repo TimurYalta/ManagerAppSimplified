@@ -5,3 +5,10 @@
  */
 export const INCREMENT_COUNTER = 'INCREMENT_COUNTER';
 export const DECREMENT_COUNTER = 'DECREMENT_COUNTER';
+export const CREATE_NEW_TEST = 'CREATE_NEW_TEST';
+export const SET_ID = 'SET_ID';
+export const CHANGE_NAME = 'CHANGE_NAME';
+export const ADD_QUESTION = 'ADD_QUESTION';
+export const SAVE_QUESTION = 'MODIFY_QUESTION';
+export const DELETE_QUESTION = 'DELETE_QUESTION';
+export const SEND_TEST = 'SEND_TEST';

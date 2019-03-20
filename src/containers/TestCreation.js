@@ -32,36 +32,38 @@ class TestCreation extends React.Component { // eslint-disable-line react/prefer
 
     render() {
         return (
-            <article>
-                <label>
-                    {'Enter the test name:'}
-                </label>
-                <input type="text" value={this.state.name} onChange={this.changeName} />
-                <button enabled={this.state.nameChanged} onClick ={this.submitNameChange}>
-                    {"Save"}
-                </button>
-
-                {this.props.id &&
-                    (<button onClick={this.props.actions.addQuestion}>
-                        {"Add question sss"}
+            <div>
+                <button onClick={this.props.actions.createNewTest}>{"Create Test"}</button>>
+                {this.prop.id && <article>
+                    <label>
+                        {'Enter the test name:'}
+                    </label>
+                    <input type="text" value={this.state.name} onChange={this.changeName} />
+                    <button enabled={this.state.nameChanged} onClick ={this.submitNameChange}>
+                        {"Save"}
                     </button>
-                    )
-                }
-                {
-                    this.props.questions.map(
-                        (question, idx) => (
-                        <Question
-                            number={idx}
-                            type={question.type}
-                            description={question.description}
-                            variants={question.variants}
-                            right={question.right}
-                            saveQuestion={this.props.actions.saveQuestion}
-                            key = {idx}
-                        />
-                    ))
-                }
-            </article>
+
+                        (<button onClick={this.props.actions.addQuestion}>
+                            {"Add question sss"}
+                        </button>
+                        )
+                    
+                    {
+                        this.props.questions.map(
+                            (question, idx) => (
+                            <Question
+                                number={idx}
+                                type={question.type}
+                                description={question.description}
+                                variants={question.variants}
+                                right={question.right}
+                                saveQuestion={this.props.actions.saveQuestion}
+                                key = {idx}
+                            />
+                        ))
+                    }
+                </article>}
+            </div>
         );
     }
 }

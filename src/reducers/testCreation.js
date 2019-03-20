@@ -11,7 +11,7 @@ import {QUESTION_TYPES} from '../constants/Constants';
 
 // The initial state of the App
 const initialState = {
-	id:'1',
+	id:'',
 	name:'',
 	educationalProgram:'',
 	questions:[]
@@ -23,8 +23,8 @@ function testCreationReducer(state = initialState, action) {
 			// Delete prefixed '@' from the github username
 			return {
                 ...state,
-                name: action.payload.name,
-                educationalProgram: action.payload.educationalProgram
+                // name: action.payload.name,
+                // educationalProgram: action.payload.educationalProgram
             };
 		case SET_ID:
             return {

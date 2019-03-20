@@ -60,7 +60,7 @@ export const setId = (id) => {
 export const changeName = (name) => {
     return (dispatch,getState) => {
         try {
-            testCreation.modifyTest(getState().id, name)
+            testCreation.modifyTest(getState().testCreation.id, name)
             .then((res)=>{
                 dispatch({
                     type: CHANGE_NAME,
@@ -96,7 +96,7 @@ export const saveQuestion = (questionNumber, newQuestion) => {
 
 export const deleteQuestion = (questionNumber) => {
     return(dispatch, getState) => {
-        const questionType = getState().testCreationReducer.questions[questionNumber].type;
+        const questionType = getState().testCreation.questions[questionNumber].type;
         if (questionType) {
             //TODO API call
         }
@@ -112,7 +112,7 @@ export const deleteQuestion = (questionNumber) => {
 
 export const sendTest = () => {
     return(dispatch, getState) => {
-        const id = getState().testCreationReducer.id;
+        const id = getState().testCreation.id;
         //TODO API call
 
         dispatch(

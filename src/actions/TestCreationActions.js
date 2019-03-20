@@ -25,6 +25,7 @@ import {
     SAVE_QUESTION
 } from '../constants/ActionTypes';
 
+import * as testCreation from '../services/testCreationServices';
 /**
  * Changes the input field of the form
  *
@@ -35,14 +36,16 @@ import {
  * @return {object}    An action object with a type of CREATE_NEW_TEST
  */
 export const createNewTest = (name, educationalProgram) => {
-    return(dispatch) => {
-        dispach(
+    return dispatch => {
+        dispatch(
             {
                 type: CREATE_NEW_TEST, 
                 payload: [name, educationalProgram]
             }
         );
-        //TODO service API call
+        try {
+            dispatch(setId(testCreation.createTest(name)));
+        } catch(e) { }
     };
 }
 
@@ -54,10 +57,17 @@ export const setId = (id) => {
 }
 
 export const changeName = (name) => {
-    return {
-        type: CHANGE_NAME,
-        payload: name
-    };
+    return dispatch => {
+        try {
+            testCreation.modifyTest(getState().id, name)
+            .then(
+                dispatch({
+                    type: CHANGE_NAME,
+                    payload: name
+                })
+            );
+        } catch(e) {}
+    }
 }
 
 export const addQuestion = () => {
@@ -67,14 +77,14 @@ export const addQuestion = () => {
 }
 
 export const saveQuestion = (questionNumber, newQuestion) => {
-    return(dispatch) => {
+    return dispatch => {
+        
         dispatch(
             {
                 type: SAVE_QUESTION,
                 payload: [questionNumber, newQuestion]
             }
         );
-        //TODO API call
     };
 }
 

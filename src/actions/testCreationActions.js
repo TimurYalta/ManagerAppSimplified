@@ -60,7 +60,7 @@ export const setId = (id) => {
 export const changeName = (name) => {
     return (dispatch,getState) => {
         try {
-            testCreation.dummyModifyTest(getState().id, name)
+            testCreation.modifyTest(getState().id, name)
             .then((res)=>{
                 dispatch({
                     type: CHANGE_NAME,
@@ -81,7 +81,7 @@ export const saveQuestion = (questionNumber, newQuestion) => {
     return (dispatch, getState) => {
         try{
             console.log(getState());
-            testCreation.dummyCreateQuestion(getState().testCreation.id, newQuestion)
+            testCreation.createQuestion(getState().testCreation.id, newQuestion)
             .then(() => {
                 dispatch(
                     {

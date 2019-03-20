@@ -57,14 +57,16 @@ export const setId = (id) => {
 }
 
 export const changeName = (name) => {
-    return dispatch => {
+    return (dispatch,getState) => {
         try {
-            testCreation.modifyTest(getState().id, name)
-            .then(
+            console.log("tried");
+            testCreation.dummyModifyTest(getState().id, name)
+            .then((res)=>{
+                console.log("here");
                 dispatch({
                     type: CHANGE_NAME,
                     payload: name
-                })
+                });}
             );
         } catch(e) {}
     }
@@ -77,14 +79,19 @@ export const addQuestion = () => {
 }
 
 export const saveQuestion = (questionNumber, newQuestion) => {
-    return dispatch => {
-        
-        dispatch(
-            {
-                type: SAVE_QUESTION,
-                payload: [questionNumber, newQuestion]
-            }
-        );
+    return (dispatch, getState) => {
+        try{
+            console.log(getState());
+            testCreation.dummyCreateQuestion(getState().testCreation.id, newQuestion)
+            .then(() => {
+                dispatch(
+                    {
+                        type: SAVE_QUESTION,
+                        payload: {questionNumber, newQuestion}
+                    }
+                );
+            });
+        } catch(e) {}
     };
 }
 

@@ -2,7 +2,7 @@ import API_BASE_URL from '../constants/ActionTypes';
 var HttpStatus = require('http-status-codes');
 
 export const createTest = (name) => {
-    fetch(API_BASE_URL+'/tests', 
+    return fetch(API_BASE_URL+'/tests', 
         {
             method: 'POST',
             body: JSON.stringify(
@@ -22,12 +22,16 @@ export const createTest = (name) => {
             throw response;
         }
     })
+    .then((data) => {
+        return data;
+    })
     .catch((e) => {
         console.log(e);
     });
 }
 
 export const modifyTest = (testId, title) => {
+    console.log("here");
     fetch(API_BASE_URL+'tests/'+testId,
         {
             method: 'PUT',
@@ -117,6 +121,29 @@ export const deleteQuestion = (testId, questionNumber) => {
         if (response.status != HttpStatus.OK) {
             throw response;
         }
+    })
+    .catch((e) => {
+        console.log(e);
+    });
+}
+
+export const dummyCreateTest = (testId, question) => {
+    return fetch('http://www.mocky.io/v2/5c92bce63200005d006bd0d7',
+        {
+            method: 'PUT'
+        }
+    )
+    .then((response) => {
+        console.log(response.status + " " + response.statusText);
+        if (response.status == HttpStatus.CREATED) {
+            return response.json();
+        } else {
+            throw response;
+        }
+    })
+    .then((data) => {
+        console.log('test_id:'+data.id);
+        return data;
     })
     .catch((e) => {
         console.log(e);

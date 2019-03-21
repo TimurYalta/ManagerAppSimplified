@@ -15,9 +15,9 @@
  *    }
  */
 
- import {
-     GET_TESTS
- } from '../constants/ActionTypes';
+import {
+    GET_TESTS
+} from '../constants/ActionTypes';
 import * as testsList from '../services/testsListServices';
 
 export const getTests = () => {
@@ -25,9 +25,10 @@ export const getTests = () => {
         try {
             testsList.getTests()
                 .then((res)=>{
+                    console.log(res);
                     dispatch({
                         type: GET_TESTS,
-                        tests: res
+                        payload: res
                     });
                 }
             );
@@ -40,9 +41,9 @@ export const deleteTest = (testId) => {
         try {
             testsList.deleteTest(testId)
                 .then(()=>{
-                    dispatch(getTests())
+                    dispatch(getTestsDel())
                 }
             );
         } catch(e) {}
     }
-} 
+}

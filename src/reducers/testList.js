@@ -1,7 +1,7 @@
 import {GET_TESTS} from '../constants/ActionTypes';
 
 const initialState = [{
-    name: 'Super Test',
+    title: 'Super Test',
     id: 'fucks',
     questions:[
         {

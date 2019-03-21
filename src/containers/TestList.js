@@ -11,13 +11,9 @@ class TestList extends React.Component { // eslint-disable-line react/prefer-sta
 
     constructor(props) {
         super(props);
-        this.state={shouldRedirect:false};
     }
     
     render() {
-        if(this.state.shouldRedirect){
-            return <Redirect to='/CreateTest' />
-        }
         return (
             <div>
                 <button><Link to='/CreateTest'>{"Create Test"}</Link></button>
@@ -29,9 +25,10 @@ class TestList extends React.Component { // eslint-disable-line react/prefer-sta
                             {`Name: ${el.title}`}
                             <button onClick={(idx)=>{
                                     this.props.actions.getQuestions(el.id, el.title);
-                                    setTimeout(()=>{this.setState({shouldRedirect:true})},200)
+                                    // setTimeout(()=>{this.setState({shouldRedirect:true})},200)
                                 }}>
-                                {"Edit test"}
+                                
+                                <Link to='/CreateTest'>{"Edit test"}</Link>
                             </button>
                             <button onClick={(idx)=>{this.props.actions.deleteTest(el.id)}}>
                                 {"Delete test"}

@@ -1,4 +1,4 @@
-import API_BASE_URL from '../constants/ActionTypes';
+import API_BASE_URL from '../constants/Constants';
 var HttpStatus = require('http-status-codes');
 
 export const getTests = () => {

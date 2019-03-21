@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux';
-import counter from './counter';
 import testCreation from './testCreation';
 import testList from './testList';
 
@@ -16,8 +15,7 @@ import testList from './testList';
  *
  * More info: http://rackt.org/redux/docs/api/combineReducers.html
  */
-const rootReducer = combineReducers({
-  counter, 
+const rootReducer = combineReducers({ 
   testCreation,
   testList
 });

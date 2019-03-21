@@ -19,7 +19,7 @@ class TestList extends React.Component { // eslint-disable-line react/prefer-sta
                 <button onClick={this.props.actions.getTests}>{"REfresh Test"}</button>
                 {this.props.testList.map(
                     (el,idx)=>(
-                        <div style={{display:'flex', justifyContent:'space-between', border: '1px solid black', padding:'20px'}}>
+                        <div key={idx} style={{display:'flex', justifyContent:'space-between', border: '1px solid black', padding:'20px'}}>
                             {`Name: ${el.title}`}
                             <button>
                                 {"Edit test"}

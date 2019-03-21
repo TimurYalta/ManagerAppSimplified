@@ -5,7 +5,8 @@ import {
 	ADD_QUESTION,
 	SAVE_QUESTION, 
 	DELETE_QUESTION,
-	SEND_TEST    
+	SEND_TEST,    
+	PUT_QUESTIONS
 } from '../constants/ActionTypes';
 import {QUESTION_TYPES} from '../constants/Constants';
 
@@ -55,17 +56,24 @@ function testCreationReducer(state = initialState, action) {
             return {
                 ...state,
                 questions: newQuestions
-            }; 
+			}; 
+			
 		case DELETE_QUESTION:
 			let questions = [...state.questions];
 			questions.splice(action.payload, 1);
             return {
                 ...state,
                 questions: questions
-            };
+			};
+		
+		case PUT_QUESTIONS:
+			return {
+				...state,
+				questions: action.payload
+			}
             
 		case SEND_TEST:
-            return initialState;
+			return initialState;
             
 		default:
 			return state;

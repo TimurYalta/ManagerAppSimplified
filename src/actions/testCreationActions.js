@@ -22,11 +22,13 @@ import {
     ADD_QUESTION,
     DELETE_QUESTION,
     SEND_TEST, 
-    SAVE_QUESTION
+    SAVE_QUESTION,
+    PUT_QUESTIONS
 } from '../constants/ActionTypes';
 
 import * as testCreation from '../services/testCreationServices';
 import parseQuestionToJSON from '../utils/utils';
+import parseQuestionFromJSON from '../utils/utils';
 /**
  * Changes the input field of the form
  *
@@ -66,7 +68,8 @@ export const changeName = (name) => {
                 dispatch({
                     type: CHANGE_NAME,
                     payload: name
-                });}
+                });
+            }
             );
         } catch(e) {}
     }
@@ -93,6 +96,26 @@ export const saveQuestion = (questionNumber, newQuestion) => {
             });
         } catch(e) {}
     };
+}
+
+export const getQuestion = (testId) => {
+    return (dispatch) => {
+        try {
+            testCreation.getQuestions(testId)
+            .then((data) => {
+                questions = [];
+                for(let question in data) {
+                    questions.push(parseQuestionFromJSON(question));
+                }
+                dispatch (
+                    {
+                        type:PUT_QUESTIONS,
+                        payload: questions
+                    }
+                )
+            })
+        } catch (e) {}
+    }
 }
 
 export const modifyQuestion = (questionNumber, question) => {

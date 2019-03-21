@@ -60,7 +60,7 @@ class Question extends React.Component { // eslint-disable-line react/prefer-sta
 
     changeTextAnswer(event){
         const desc = event.target.value;
-        this.setState({variants: desc})
+        this.setState({right: desc})
     }
 
     changeRadioRightAnswer(idx){

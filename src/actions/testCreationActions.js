@@ -35,6 +35,7 @@ import * as testCreation from '../services/testCreationServices';
  * 
  * @return {object}    An action object with a type of CREATE_NEW_TEST
  */
+<<<<<<< HEAD:src/actions/testCreationActions.js
 export const createNewTest = (name) => {
     return (dispatch) => {
         try {
@@ -48,6 +49,18 @@ export const createNewTest = (name) => {
             );
         } catch(e) {}
     }
+=======
+export const createNewTest = (name, educationalProgram) => {
+    return(dispatch) => {
+        dispatch(
+            {
+                type: CREATE_NEW_TEST, 
+                payload: [name, educationalProgram]
+            }
+        );
+        //TODO service API call
+    };
+>>>>>>> ManagerApp-TestList:src/actions/TestCreationActions.js
 }
 
 export const setId = (id) => {

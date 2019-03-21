@@ -47,11 +47,9 @@ class TestCreation extends React.Component { // eslint-disable-line react/prefer
                     </button>
                     }
                 {this.props.id && <article>
-                        (<button onClick={this.props.actions.addQuestion}>
+                        <button onClick={this.props.actions.addQuestion}>
                             {"Add question sss"}
                         </button>
-                        )
-                    
                     {
                         this.props.questions.map(
                             (question, idx) => (

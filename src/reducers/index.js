@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import counter from './counter';
 import testCreation from './testCreation';
+import testList from './testList';
 
 /**
  * combineReducers is important to understand. As your app might grow in size
@@ -17,7 +18,8 @@ import testCreation from './testCreation';
  */
 const rootReducer = combineReducers({
   counter, 
-  testCreation
+  testCreation,
+  testList
 });
 
 export default rootReducer;

@@ -12,3 +12,4 @@ export const ADD_QUESTION = 'ADD_QUESTION';
 export const SAVE_QUESTION = 'SAVE_QUESTION';
 export const DELETE_QUESTION = 'DELETE_QUESTION';
 export const SEND_TEST = 'SEND_TEST';
+export const GET_TEST = 'GET_TESTS';

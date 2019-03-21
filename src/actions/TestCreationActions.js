@@ -36,7 +36,7 @@ import {
  */
 export const createNewTest = (name, educationalProgram) => {
     return(dispatch) => {
-        dispach(
+        dispatch(
             {
                 type: CREATE_NEW_TEST, 
                 payload: [name, educationalProgram]

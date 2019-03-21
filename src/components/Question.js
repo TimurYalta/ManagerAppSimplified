@@ -14,7 +14,6 @@ class Question extends React.Component { // eslint-disable-line react/prefer-sta
             description: props.description,
             variants:props.variants,
             right:props.right,
-            isModified: false
         };
         this.changeType = this.changeType.bind(this);
         this.changeDescription = this.changeDescription.bind(this);
@@ -26,10 +25,17 @@ class Question extends React.Component { // eslint-disable-line react/prefer-sta
         this.toggleCheckRightAnswer = this.toggleCheckRightAnswer.bind(this);
         this.changeCheckAnswer = this.changeCheckAnswer.bind(this);
         this.addCheckVariant = this.addCheckVariant.bind(this);
+        this.deleteQuestion=this.deleteQuestion.bind(this);
     }
 
     saveQuestion () {
-        this.props.saveQuestion(this.props.number,this.state);
+
+        if (!this.props.isCreated){
+            this.props.saveQuestion(this.props.number,this.state);
+        }
+        else{
+            this.props.modifyQuestion(this.props.number, this.state);
+        }
     }
     
     changeType(event){
@@ -97,14 +103,19 @@ class Question extends React.Component { // eslint-disable-line react/prefer-sta
         newVariants[idx]=answer;
         this.setState({variants:newVariants});
     }
+
     addCheckVariant(){
         this.setState({variants:[...this.state.variants, ""]})
     }
 
+    deleteQuestion(){
+        this.props.deleteQuestion(this.props.number);
+    }
+    
     render() {
         return (
-            <div style={{border:'1px solid black',width:'50%'}}>
-                <h1>{this.props.number}</h1>
+            <div style={{border:'1px solid black',width:'100%'}}>
+                <h1>{this.props.number+1}</h1>
                 <br/>
                 <label>{"Choose question type: "}</label>
                 <select onChange={this.changeType} value={this.state.type} >
@@ -123,7 +134,7 @@ class Question extends React.Component { // eslint-disable-line react/prefer-sta
                         <label>
                             {"Enter text question answer: "}
                         </label>
-                        <input onChange = {this.changeTextAnswer}/>
+                        <input onChange = {this.changeTextAnswer} value={this.state.right}/>
                     </div>
                 }
                 {
@@ -191,6 +202,11 @@ class Question extends React.Component { // eslint-disable-line react/prefer-sta
                     onClick = {this.saveQuestion}
                 >
                     {"Save question"}
+                </button>
+                <button
+                    onClick = {this.deleteQuestion}
+                >
+                    {"Delete question"}
                 </button>
             </div>
         );

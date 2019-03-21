@@ -4,14 +4,16 @@ import PropTypes from 'prop-types';
 import * as testCreationActions from '../actions/testCreationActions';
 import { bindActionCreators } from 'redux';
 import Question from '../components/Question';
+import {Link} from 'react-router-dom';
 // import './style.scss';
 
 class TestCreation extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
     constructor(props) {
+
         super(props);
         this.state = {
-            name: this.props.name,
+            name: props.name,
             nameChanged: false
         };
         this.changeName = this.changeName.bind(this);
@@ -33,7 +35,8 @@ class TestCreation extends React.Component { // eslint-disable-line react/prefer
     render() {
         return (
             <div>
-                
+                <button><Link to="/">{"Back to Test List"}</Link></button>
+                <br/>
                 <label>
                         {'Enter the test name:'}
                     </label>
@@ -48,7 +51,7 @@ class TestCreation extends React.Component { // eslint-disable-line react/prefer
                     }
                 {this.props.id && <article>
                         <button onClick={this.props.actions.addQuestion}>
-                            {"Add question sss"}
+                            {"Add question"}
                         </button>
                     {
                         this.props.questions.map(
@@ -60,7 +63,10 @@ class TestCreation extends React.Component { // eslint-disable-line react/prefer
                                 variants={question.variants}
                                 right={question.right}
                                 saveQuestion={this.props.actions.saveQuestion}
+                                modifyQuestion ={this.props.actions.modifyQuestion}
+                                deleteQuestion ={this.props.actions.deleteQuestion}
                                 key = {idx}
+                                isCreated ={question.isCreated}
                             />
                         ))
                     }

@@ -22,10 +22,11 @@ import {
     ADD_QUESTION,
     DELETE_QUESTION,
     SEND_TEST, 
-    SAVE_QUESTION
+    SAVE_QUESTION,
 } from '../constants/ActionTypes';
 
 import * as testCreation from '../services/testCreationServices';
+import { parseQuestionToJSON } from '../utils/utils';
 /**
  * Changes the input field of the form
  *
@@ -61,11 +62,12 @@ export const changeName = (name) => {
     return (dispatch,getState) => {
         try {
             testCreation.modifyTest(getState().testCreation.id, name)
-            .then((res)=>{
+            .then(()=>{
                 dispatch({
                     type: CHANGE_NAME,
                     payload: name
-                });}
+                });
+            }
             );
         } catch(e) {}
     }
@@ -77,16 +79,16 @@ export const addQuestion = () => {
     };
 }
 
-export const saveQuestion = (questionNumber, newQuestion) => {
+export const saveQuestion = (questionNumber, question) => {
     return (dispatch, getState) => {
-        try{
-            console.log(getState());
-            testCreation.createQuestion(getState().testCreation.id, newQuestion)
+        try {
+            let testId = getState().testCreation.id; 
+            testCreation.createQuestion(testId, parseQuestionToJSON(question))
             .then(() => {
                 dispatch(
                     {
                         type: SAVE_QUESTION,
-                        payload: {questionNumber, newQuestion}
+                        payload: {questionNumber, question}
                     }
                 );
             });
@@ -94,27 +96,42 @@ export const saveQuestion = (questionNumber, newQuestion) => {
     };
 }
 
+export const modifyQuestion = (questionNumber, question) => {
+    return (dispatch, getState) => {
+        try {
+            let testId = getState().testCreation.id;
+            testCreation.modifyQuestion(testId, questionNumber, parseQuestionToJSON(question))
+            .then(() => {
+                dispatch(
+                    {
+                        type: SAVE_QUESTION,
+                        payload: {questionNumber, question}
+                    }
+                )
+            });
+        } catch (e) {}
+    }
+}
+
 export const deleteQuestion = (questionNumber) => {
     return(dispatch, getState) => {
-        const questionType = getState().testCreation.questions[questionNumber].type;
-        if (questionType) {
-            //TODO API call
-        }
-        
-        dispatch(
-            {
-                type: DELETE_QUESTION,
-                payload: questionNumber
-            }
-        );
+        try {
+            let testId = getState().testCreation.id; 
+            testCreation.deleteQuestion(testId, questionNumber)
+            .then(() => {
+                dispatch(
+                    {
+                        type:DELETE_QUESTION,
+                        payload: questionNumber
+                    }
+                )
+            });
+        } catch(e) {}
     }
 }
 
 export const sendTest = () => {
-    return(dispatch, getState) => {
-        const id = getState().testCreation.id;
-        //TODO API call
-
+    return(dispatch) => {
         dispatch(
             {
                 type: SEND_TEST

@@ -16,9 +16,11 @@
  */
 
 import {
-    GET_TESTS
+    GET_TESTS,
+    PUT_QUESTIONS
 } from '../constants/ActionTypes';
 import * as testsList from '../services/testsListServices';
+import { parseQuestionFromJSON } from '../utils/utils';
 
 export const getTests = () => {
     return (dispatch) => {
@@ -41,9 +43,30 @@ export const deleteTest = (testId) => {
         try {
             testsList.deleteTest(testId)
                 .then(()=>{
-                    dispatch(getTestsDel())
+                    dispatch(getTests())
                 }
             );
         } catch(e) {}
+    }
+}
+
+export const getQuestions = (testId, title) => {
+    return (dispatch) => {
+        try {
+            testsList.getQuestions(testId)
+            .then((data) => {
+                var questions = [];
+                for(let question of data) {
+                    console.log(parseQuestionFromJSON(question));
+                    questions.push(parseQuestionFromJSON(question));
+                }
+                dispatch (
+                    {
+                        type:PUT_QUESTIONS,
+                        payload: {testId, title, questions}
+                    }
+                )
+            })
+        } catch (e) {}
     }
 }

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Footer from '../components/Footer';
 import TestCreation from '../containers/TestCreation';
 import TestList from '../containers/TestList';
+import {Switch, Route,HashRouter} from 'react-router-dom';
 /**
  * It is common practice to have a 'Root' container/component require our main App (this one).
  * Again, this is because it serves to wrap the rest of our application with the Provider
@@ -17,7 +18,12 @@ class App extends Component {
       <div className="main-app-container">
         <div className="main-app-nav">Simple Redux Boilerplate</div>
 
-        <TestList/>
+        <HashRouter basename='/'>
+          <Switch>
+            <Route exact path='/' component={TestList}/>
+            <Route exact path='/CreateTest' component={TestCreation}/>
+          </Switch>
+        </HashRouter> 
         <Footer />
       </div>
     );

@@ -6,21 +6,24 @@ export const parseQuestionFromJSON = (question) => {
             return {
                 type: QUESTION_TYPES.TEXT,
                 description: question.question.description,
-                right: question.question.answer
+                right: question.question.answer,
+                isCreated:true
             }
         case QUESTION_TYPES.RADIO:
             return {
                 type: QUESTION_TYPES.RADIO,
                 description: question.question.description,
                 variants: question.question.variants.map((el)=>{return el.text }),
-                right: question.question.answer
+                right: question.question.answer.map((el)=>{return el-1}),
+                isCreated:true
             }
         case QUESTION_TYPES.CHECK:
             return {
                 type: QUESTION_TYPES.CHECK,
                 description: question.question.description,
                 variants: question.question.variants.map((el)=>{return el.text }),
-                right: question.question.answer
+                right: question.question.answer.map((el)=>{return el-1}),
+                isCreated:true
             }
     }
 }

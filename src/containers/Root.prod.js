@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
+import {BrowserRouter} from 'react-router-dom';
 import App from './App';
 
 /**
@@ -15,7 +16,7 @@ module.exports = class Root extends Component {
        * calls in component hierarchy below.
        */
       <Provider store={store}>
-        <App />
+          <App />
       </Provider>
     );
   }

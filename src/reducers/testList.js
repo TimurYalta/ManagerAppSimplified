@@ -24,7 +24,7 @@ const initialState = [{
         },
     ]
 },{
-    name: 'Super Test',
+    title: 'Super Test',
     id: 'fucks',
     questions:[
         {
@@ -53,7 +53,7 @@ const initialState = [{
 function testCreationReducer(state = initialState, action) {
 	switch (action.type) {
         case GET_TESTS:
-            return action.payload;
+            return action.payload||[];
 		default:
 			return state;
 	}

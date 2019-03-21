@@ -43,7 +43,8 @@ function testCreationReducer(state = initialState, action) {
 				type: QUESTION_TYPES.TEXT,
 				description: '',
 				variants: [],
-				right:''
+				right:'',
+				isCreated:false
 			};
             return {
                 ...state,
@@ -52,7 +53,10 @@ function testCreationReducer(state = initialState, action) {
 			
 		case SAVE_QUESTION:
 			let newQuestions = [...state.questions];
-			newQuestions[action.payload.questionNumber] = action.payload.newQuestion;
+			newQuestions[action.payload.questionNumber] = {
+				...action.payload.question,
+				isCreated:true
+			};
             return {
                 ...state,
                 questions: newQuestions
@@ -68,8 +72,9 @@ function testCreationReducer(state = initialState, action) {
 		
 		case PUT_QUESTIONS:
 			return {
-				...state,
-				questions: action.payload
+				id: action.payload.testId,
+				name: action.payload.title,
+				questions: action.payload.questions
 			}
             
 		case SEND_TEST:

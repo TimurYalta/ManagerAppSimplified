@@ -23,12 +23,10 @@ import {
     DELETE_QUESTION,
     SEND_TEST, 
     SAVE_QUESTION,
-    PUT_QUESTIONS
 } from '../constants/ActionTypes';
 
 import * as testCreation from '../services/testCreationServices';
-import parseQuestionToJSON from '../utils/utils';
-import parseQuestionFromJSON from '../utils/utils';
+import { parseQuestionToJSON } from '../utils/utils';
 /**
  * Changes the input field of the form
  *
@@ -64,7 +62,7 @@ export const changeName = (name) => {
     return (dispatch,getState) => {
         try {
             testCreation.modifyTest(getState().testCreation.id, name)
-            .then((res)=>{
+            .then(()=>{
                 dispatch({
                     type: CHANGE_NAME,
                     payload: name
@@ -81,41 +79,21 @@ export const addQuestion = () => {
     };
 }
 
-export const saveQuestion = (questionNumber, newQuestion) => {
+export const saveQuestion = (questionNumber, question) => {
     return (dispatch, getState) => {
         try {
             let testId = getState().testCreation.id; 
-            testCreation.createQuestion(testId, parseQuestionToJSON(newQuestion))
+            testCreation.createQuestion(testId, parseQuestionToJSON(question))
             .then(() => {
                 dispatch(
                     {
                         type: SAVE_QUESTION,
-                        payload: {questionNumber, newQuestion}
+                        payload: {questionNumber, question}
                     }
                 );
             });
         } catch(e) {}
     };
-}
-
-export const getQuestion = (testId) => {
-    return (dispatch) => {
-        try {
-            testCreation.getQuestions(testId)
-            .then((data) => {
-                questions = [];
-                for(let question in data) {
-                    questions.push(parseQuestionFromJSON(question));
-                }
-                dispatch (
-                    {
-                        type:PUT_QUESTIONS,
-                        payload: questions
-                    }
-                )
-            })
-        } catch (e) {}
-    }
 }
 
 export const modifyQuestion = (questionNumber, question) => {
@@ -153,7 +131,7 @@ export const deleteQuestion = (questionNumber) => {
 }
 
 export const sendTest = () => {
-    return(dispatch, getState) => {
+    return(dispatch) => {
         dispatch(
             {
                 type: SEND_TEST

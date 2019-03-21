@@ -39,3 +39,25 @@ export const deleteTest = (testId) => {
         console.log(e);
     });
 }
+
+export const getQuestions = (testId) => {
+    return fetch(API_BASE_URL+'/tests/'+testId+'/questions',
+        {
+            method: 'GET'
+        }
+    )
+    .then((response) => {
+        console.log(response.status + " " + response.statusText);
+        if (response.status == HttpStatus.OK) {
+            return response.json()
+                .then((data) => {
+                    return data;
+                });
+        } else {
+            throw response;
+        }
+    })
+    .catch((e) => {
+        console.log(e);
+    });
+}

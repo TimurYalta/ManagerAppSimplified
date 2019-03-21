@@ -47,7 +47,8 @@ function testCreationReducer(state = initialState, action) {
             return {
                 ...state,
                 questions: [...state.questions, newQuestion],
-            }; 
+			};
+			
 		case SAVE_QUESTION:
 			let newQuestions = [...state.questions];
 			newQuestions[action.payload.questionNumber] = action.payload.newQuestion;

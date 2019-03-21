@@ -26,6 +26,7 @@ import {
 } from '../constants/ActionTypes';
 
 import * as testCreation from '../services/testCreationServices';
+import parseQuestionToJSON from '../utils/utils';
 /**
  * Changes the input field of the form
  *
@@ -79,9 +80,9 @@ export const addQuestion = () => {
 
 export const saveQuestion = (questionNumber, newQuestion) => {
     return (dispatch, getState) => {
-        try{
-            console.log(getState());
-            testCreation.createQuestion(getState().testCreation.id, newQuestion)
+        try {
+            let testId = getState().testCreation.id; 
+            testCreation.createQuestion(testId, parseQuestionToJSON(newQuestion))
             .then(() => {
                 dispatch(
                     {
@@ -94,27 +95,42 @@ export const saveQuestion = (questionNumber, newQuestion) => {
     };
 }
 
+export const modifyQuestion = (questionNumber, question) => {
+    return (dispatch, getState) => {
+        try {
+            let testId = getState().testCreation.id;
+            testCreation.modifyQuestion(testId, questionNumber, parseQuestionToJSON(question))
+            .then(() => {
+                dispatch(
+                    {
+                        type: SAVE_QUESTION,
+                        payload: {questionNumber, question}
+                    }
+                )
+            });
+        } catch (e) {}
+    }
+}
+
 export const deleteQuestion = (questionNumber) => {
     return(dispatch, getState) => {
-        const questionType = getState().testCreation.questions[questionNumber].type;
-        if (questionType) {
-            //TODO API call
-        }
-        
-        dispatch(
-            {
-                type: DELETE_QUESTION,
-                payload: questionNumber
-            }
-        );
+        try {
+            let testId = getState().testCreation.id; 
+            testCreation.deleteQuestion(testId, questionNumber)
+            .then(() => {
+                dispatch(
+                    {
+                        type:DELETE_QUESTION,
+                        payload: questionNumber
+                    }
+                )
+            });
+        } catch(e) {}
     }
 }
 
 export const sendTest = () => {
     return(dispatch, getState) => {
-        const id = getState().testCreation.id;
-        //TODO API call
-
         dispatch(
             {
                 type: SEND_TEST

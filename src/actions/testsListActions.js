@@ -55,7 +55,7 @@ export const getQuestions = (testId, title) => {
         try {
             testsList.getQuestions(testId)
             .then((data) => {
-                var questions = [];
+                let questions = [];
                 for(let question of data) {
                     console.log(parseQuestionFromJSON(question));
                     questions.push(parseQuestionFromJSON(question));

@@ -19,14 +19,20 @@ class TestCreation extends React.Component { // eslint-disable-line react/prefer
         this.changeName = this.changeName.bind(this);
         this.submitNameChange = this.submitNameChange.bind(this);
     }
-    //id?
-    //name
-    //
+   
     changeName (e) {
         let val = e.target.value;
         let nameChanged = (val == this.state.name);
         this.setState({ name: val, nameChanged });
     };
+    componentWillReceiveProps(props){
+        if(!this.state.nameChanged){
+            this.setState ({
+                name: props.name,
+                nameChanged: false
+            });
+        }
+    }
 
     submitNameChange(){
         this.props.actions.changeName(this.state.name);

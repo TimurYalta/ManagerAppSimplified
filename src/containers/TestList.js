@@ -24,9 +24,8 @@ class TestList extends React.Component { // eslint-disable-line react/prefer-sta
                         <div key={idx} style={{display:'flex', justifyContent:'space-between', border: '1px solid black', padding:'20px'}}>
                             {`Name: ${el.title}`}
                             <button onClick={(idx)=>{
-                                    this.props.actions.getQuestions(el.id, el.title);
-                                    // setTimeout(()=>{this.setState({shouldRedirect:true})},200)
-                                }}>
+                                   this.props.actions.getQuestions(el.id, el.title);
+                                }} >
                                 
                                 <Link to='/CreateTest'>{"Edit test"}</Link>
                             </button>

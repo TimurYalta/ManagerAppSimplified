@@ -49,7 +49,7 @@ export const getQuestions = (testId) => {
     .then((response) => {
         console.log(response.status + " " + response.statusText);
         if (response.status == HttpStatus.OK) {
-            return response.json()
+            return response.clone().json()
                 .then((data) => {
                     return data;
                 });

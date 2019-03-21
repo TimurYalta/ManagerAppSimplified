@@ -16,7 +16,7 @@ export const createTest = (name) => {
     .then((response) => {
         console.log(response.status + " " + response.statusText);
         if (response.status == HttpStatus.CREATED) {
-            return response.json()
+            return response.clone().json()
                 .then((data) => {
                     console.log('test_id:'+data.id);
                     return data;

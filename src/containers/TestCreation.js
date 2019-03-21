@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import * as TestCreationActions from '../actions/TestCreationActions';
 import { bindActionCreators } from 'redux';
 import Question from '../components/Question';
+import {Link} from 'react-router-dom';
 // import './style.scss';
 
 class TestCreation extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -33,7 +34,8 @@ class TestCreation extends React.Component { // eslint-disable-line react/prefer
     render() {
         return (
             <div>
-                
+                <button><Link to="/">{"Back to Test List"}</Link></button>
+                <br/>
                 <label>
                         {'Enter the test name:'}
                     </label>

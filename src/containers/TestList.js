@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import * as TestCreationActions from '../actions/TestCreationActions';
 import { bindActionCreators } from 'redux';
+import {Link} from 'react-router-dom';
 // import Question from '../components/Question';
 // import './style.scss';
 
@@ -15,7 +16,7 @@ class TestList extends React.Component { // eslint-disable-line react/prefer-sta
     render() {
         return (
             <div>
-                <button>{"Create Test"}</button>
+                <button><Link to='/CreateTest'>{"Create Test"}</Link></button>
                 {this.props.testList.map(
                     (el,idx)=>(
                         <div style={{display:'flex', justifyContent:'space-between', border: '1px solid black', padding:'20px'}}>

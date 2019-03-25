@@ -15,13 +15,13 @@
  *    }
  */
 
-import { 
-    CREATE_NEW_TEST, 
-    SET_ID, 
-    CHANGE_NAME, 
+import {
+    CREATE_NEW_TEST,
+    SET_ID,
+    CHANGE_NAME,
     ADD_QUESTION,
     DELETE_QUESTION,
-    SEND_TEST, 
+    SEND_TEST,
     SAVE_QUESTION,
 } from '../constants/ActionTypes';
 
@@ -33,21 +33,22 @@ import { parseQuestionToJSON } from '../utils/utils';
  * @param  {name} name The name of the recently created test
  * @param  {educationalProgram} educationalProgram The type
  * of the program for which the test is created
- * 
+ *
  * @return {object}    An action object with a type of CREATE_NEW_TEST
  */
 export const createNewTest = (name) => {
     return (dispatch) => {
         try {
+            console.log(name);
             testCreation.createTest(name)
                 .then((res)=>{
-                    dispatch(setId(res.id));
+                    dispatch(setId(res.test_id));
                     dispatch({
                         type: CREATE_NEW_TEST
                     });
                 }
             );
-        } catch(e) {}
+        } catch(e) {console.log(e)}
     }
 }
 
@@ -82,7 +83,7 @@ export const addQuestion = () => {
 export const saveQuestion = (questionNumber, question) => {
     return (dispatch, getState) => {
         try {
-            let testId = getState().testCreation.id; 
+            let testId = getState().testCreation.id;
             testCreation.createQuestion(testId, parseQuestionToJSON(question))
             .then(() => {
                 dispatch(
@@ -116,7 +117,7 @@ export const modifyQuestion = (questionNumber, question) => {
 export const deleteQuestion = (questionNumber) => {
     return(dispatch, getState) => {
         try {
-            let testId = getState().testCreation.id; 
+            let testId = getState().testCreation.id;
             testCreation.deleteQuestion(testId, questionNumber)
             .then(() => {
                 dispatch(

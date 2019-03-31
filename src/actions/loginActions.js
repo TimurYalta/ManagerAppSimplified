@@ -17,6 +17,7 @@ export const login = (login, password) => {
         })
         .catch((e) => {
             if (e.status == HttpStatus.BAD_REQUEST) {
+                alert("Incorrect login/password");
                 dispatch({
                     type: INCORRECT_LOGIN
                 });

@@ -34,7 +34,7 @@ export const getTests = () => {
                     });
                 }
             );
-        } catch(e) {}
+        } catch(e) {console.log(e);}
     }
 }
 

@@ -1,8 +1,8 @@
-import API_BASE_URL from '../constants/Constants';
+import {API_BASE_URL} from '../constants/Constants';
 var HttpStatus = require('http-status-codes');
 
 export const createTest = (name) => {
-    return fetch(API_BASE_URL+'/tests', 
+    return fetch(API_BASE_URL+'/tests',
         {
             method: 'POST',
             body: JSON.stringify(
@@ -15,10 +15,10 @@ export const createTest = (name) => {
     )
     .then((response) => {
         console.log(response.status + " " + response.statusText);
-        if (response.status == HttpStatus.CREATED) {
+        if (response.status == HttpStatus.OK) {
             return response.clone().json()
                 .then((data) => {
-                    console.log('test_id:'+data.id);
+                    console.log('test_id:'+data.test_id);
                     return data;
                 });
         } else {
@@ -52,7 +52,7 @@ export const modifyTest = (testId, title) => {
 }
 
 export const createQuestion = (testId, question) => {
-    
+
     return fetch(API_BASE_URL+'/tests/'+testId+'/questions',
         {
             method: 'POST',
@@ -106,4 +106,3 @@ export const deleteQuestion = (testId, questionNumber) => {
         console.log(e);
     });
 }
-

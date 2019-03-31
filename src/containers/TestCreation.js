@@ -19,7 +19,7 @@ class TestCreation extends React.Component { // eslint-disable-line react/prefer
         this.changeName = this.changeName.bind(this);
         this.submitNameChange = this.submitNameChange.bind(this);
     }
-   
+
     changeName (e) {
         let val = e.target.value;
         let nameChanged = (val == this.state.name);
@@ -48,7 +48,7 @@ class TestCreation extends React.Component { // eslint-disable-line react/prefer
                     </label>
                     <input type="text" value={this.state.name} onChange={this.changeName} />
                     {!this.props.id?
-                    <button onClick={this.props.actions.createNewTest}>
+                    <button onClick={()=>{this.props.actions.createNewTest(this.state.name)}}>
                         {"Create Test"}
                     </button>:
                     <button enabled={this.state.nameChanged} onClick ={this.submitNameChange}>
@@ -100,4 +100,3 @@ export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(TestCreation);
-

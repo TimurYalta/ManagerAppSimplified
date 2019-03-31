@@ -1,7 +1,8 @@
-import API_BASE_URL from '../constants/Constants';
+import {API_BASE_URL} from '../constants/Constants';
 var HttpStatus = require('http-status-codes');
 
 export const getTests = () => {
+    console.log(API_BASE_URL+'/tests');
     return fetch(API_BASE_URL+'/tests',
         {
             method: 'GET'
@@ -10,8 +11,9 @@ export const getTests = () => {
     .then((response) => {
         console.log(response.status + " " + response.statusText);
         if (response.status == HttpStatus.OK) {
-            return response.clone().json()
+            return response.json()
                 .then((data) => {
+                    console.log(data);
                     return data;
                 });
         } else {

@@ -9,13 +9,13 @@ var HttpStatus = require('http-status-codes');
 export const login = (login, password) => {
     return (dispatch) => {
         authorize(login, password)
-        .then(token => {
+        .then((token) => {
             dispatch({
                 type: SUCCESSFUL_LOGIN,
                 payload: token
             });
         })
-        .catch(e => {
+        .catch((e) => {
             if (e.status == HttpStatus.BAD_REQUEST) {
                 dispatch({
                     type: INCORRECT_LOGIN

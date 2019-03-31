@@ -12,3 +12,5 @@ export const DELETE_QUESTION = 'DELETE_QUESTION';
 export const SEND_TEST = 'SEND_TEST';
 export const PUT_QUESTIONS = 'PUT_QUESTIONS';
 export const GET_TESTS = 'GET_TESTS';
+export const SUCCESSFUL_LOGIN = 'SUCCESSFUL_LOGIN';
+export const INCORRECT_LOGIN = 'INCORRECT_LOGIN';

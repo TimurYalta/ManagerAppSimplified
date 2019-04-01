@@ -19,3 +19,5 @@ function applicationReducer(state = initialState, action) {
             return initialState;
     }
 }
+
+export default applicationReducer;

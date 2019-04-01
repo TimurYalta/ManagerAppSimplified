@@ -39,7 +39,6 @@ import { parseQuestionToJSON } from '../utils/utils';
 export const createNewTest = (name) => {
     return (dispatch) => {
         try {
-            console.log(name);
             testCreation.createTest(name)
                 .then((res)=>{
                     dispatch(setId(res.test_id));

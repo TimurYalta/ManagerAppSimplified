@@ -3,7 +3,7 @@ import {
     INCORRECT_LOGIN
 } from '../constants/ActionTypes';
 
-import authorize from '../services/loginActions';
+import authorize from '../services/login';
 var HttpStatus = require('http-status-codes');
 
 export const login = (login, password) => {

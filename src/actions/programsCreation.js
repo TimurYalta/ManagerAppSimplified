@@ -14,7 +14,8 @@ export const createProgram = (name) => {
             .then((res)=>{
                 dispatch(setId(res.program_id));
                 dispatch({
-                    type: CREATE_PROGRAM
+                    type: CREATE_PROGRAM,
+                    payload: name
                 });
             })
             .catch((e) => {

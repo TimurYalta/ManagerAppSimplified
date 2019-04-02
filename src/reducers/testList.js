@@ -3,7 +3,7 @@ import {GET_TESTS} from '../constants/ActionTypes';
 const initialState = [];
 
 
-function testCreationReducer(state = initialState, action) {
+function testListReducer(state = initialState, action) {
 	switch (action.type) {
         case GET_TESTS:
             return action.payload||[];
@@ -12,4 +12,4 @@ function testCreationReducer(state = initialState, action) {
 	}
 }
 
-export default testCreationReducer;
+export default testListReducer;

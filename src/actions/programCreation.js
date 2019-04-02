@@ -5,14 +5,14 @@ import {
     DELETE_TEST_FROM_PROGRAM
 } from '../constants/ActionTypes';
 
-import * as programsCreation from '../services/programsCreation';
+import * as programCreation from '../services/programCreation';
 
 
 export const createProgram = (name) => {
     return (dispatch, getState) => {
         programsCreation.createProgram(name, getState().applicationReducer.token)
             .then((res)=>{
-                dispatch(setId(res.program_id));
+                dispatch(setId(res));
                 dispatch({
                     type: CREATE_PROGRAM,
                     payload: name

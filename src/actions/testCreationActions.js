@@ -43,7 +43,8 @@ export const createNewTest = (name) => {
                 .then((res)=>{
                     dispatch(setId(res.test_id));
                     dispatch({
-                        type: CREATE_NEW_TEST
+                        type: CREATE_NEW_TEST,
+                        payload: name
                     });
                 }
             );

@@ -2,7 +2,8 @@ import {
     CREATE_PROGRAM,
     SET_PROGRAM_ID,
     ADD_TEST_TO_PROGRAM,
-    DELETE_TEST_FROM_PROGRAM
+    DELETE_TEST_FROM_PROGRAM,
+    SAVE_PROGRAM
 } from '../constants/ActionTypes';
 
 import * as programCreation from '../services/programCreation';
@@ -10,7 +11,7 @@ import * as programCreation from '../services/programCreation';
 
 export const createProgram = (name) => {
     return (dispatch, getState) => {
-        programsCreation.createProgram(name, getState().applicationReducer.token)
+        programsCreation.createProgram(getState().applicationReducer.token, name)
             .then((res)=>{
                 dispatch(setId(res));
                 dispatch({
@@ -31,17 +32,52 @@ export const setId = (id) => {
     };
 }
 
-//TODO implement after the API
 export const getTests = () => {
-
+    return (dispatch, getState) => {
+        try {
+            testsList.getTests(getState().applicationReducer.token)
+                .then((res)=>{
+                    console.log(res);
+                    dispatch({
+                        type: GET_TESTS,
+                        payload: res
+                    });
+                }
+            );
+        } catch(e) {
+            console.log(e);
+        }
+    }
 }
 
-//TODO implement after the API
 export const addTest = (id) => {
-
+    return {
+        type: ADD_TEST_TO_PROGRAM,
+        payload: id
+    }
 }
 
-//TODO implement after the API
 export const deleteTest = (id) => {
+    return {
+        type: DELETE_TEST_FROM_PROGRAM,
+        payload: id
+    }
+}
 
+export const saveProgram = () => {
+    return (dispatch, getState) => {
+        token = getState().applicationReducer.token;
+        id = getState().program.id;
+        title = getState().program.title;
+        tests = getState().program.tests;
+        programCreation.modifyProgram(token, id, title, tests)
+            .then(() => {
+                dispatch({
+                    type: SAVE_PROGRAM
+                });
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+    }
 }

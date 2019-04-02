@@ -5,7 +5,7 @@ import {
 
 //The initial state of the app
 const initialState = {
-    token: ''
+    token: 'dafa'
 };
 
 function applicationReducer(state = initialState, action) {

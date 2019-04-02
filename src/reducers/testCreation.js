@@ -24,8 +24,7 @@ function testCreationReducer(state = initialState, action) {
 			// Delete prefixed '@' from the github username
 			return {
                 ...state,
-                // name: action.payload.name,
-                // educationalProgram: action.payload.educationalProgram
+                name: action.payload.name,
             };
 		case SET_ID:
             return {

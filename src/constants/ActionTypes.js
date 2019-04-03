@@ -22,4 +22,8 @@ export const DELETE_TEST_FROM_PROGRAM = 'DELETE_TEST_FROM_PROGRAM';
 export const SAVE_PROGRAM = 'SAVE_PROGRAM';
 export const SUCCESSFUL_LOGIN = 'SUCCESSFUL_LOGIN';
 export const INCORRECT_LOGIN = 'INCORRECT_LOGIN';
+<<<<<<< HEAD
 export const CLEAR_PROGRAM = 'CLEAR_PROGRAM';
+=======
+export const LOGOUT = 'LOGOUT';
+>>>>>>> develop

@@ -27,8 +27,10 @@ const initialState = {
             changed: 12345678
         },
         {
-            type: "rejected",
+            type: "accepted",
             changed: 12345678,
+            interviewer:21342,
+            comment:'loh',
             reason: "Tupoi",
             fixable: false
         }

@@ -48,11 +48,13 @@ export const registerUser = (name, role, email) => {
     return (dispatch, getState) => {
         account.registerUser(name, role, email)
             .then(() => {
+                alert("User has been registered");
                 dispatch({
                     type: REGISTER_USER
                 });
             })
             .catch((e) => {
+                alert("Sosi zhopu");
                 console.log(e);
             });
     }

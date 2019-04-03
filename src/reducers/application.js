@@ -1,6 +1,7 @@
 import {
     SUCCESSFUL_LOGIN,
-    INCORRECT_LOGIN
+    INCORRECT_LOGIN,
+    LOGOUT
 } from '../constants/ActionTypes';
 
 //The initial state of the app
@@ -15,8 +16,10 @@ function applicationReducer(state = initialState, action) {
                 token: action.payload
             };
         case INCORRECT_LOGIN:
-        default:
+        case LOGOUT:
             return initialState;
+        default:
+            return state;
     }
 }
 

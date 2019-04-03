@@ -4,6 +4,8 @@ import testList from './testList';
 import application from './application';
 import program from './program';
 import programList from './programList';
+import applicationsList from './applicationsList';
+import candidateApplication from './candidateApplication';
 
 /**
  * combineReducers is important to understand. As your app might grow in size
@@ -23,7 +25,9 @@ const rootReducer = combineReducers({
   testList,
   application,
   program,
-  programList
+  programList,
+  applicationsList,
+  candidateApplication
 });
 
 export default rootReducer;

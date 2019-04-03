@@ -49,7 +49,7 @@ export const getApplication = (id) => {
     });
 }
 
-export const updateApplicationStatus = (status) => {
+export const updateApplicationStatus = (status, id) => {
     return fetch(API_BASE_URL+'/applications/'+id, 
         {
             method: 'PUT',

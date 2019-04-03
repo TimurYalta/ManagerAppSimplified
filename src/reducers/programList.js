@@ -1,27 +1,25 @@
-import { GET_TESTS } from '../constants/ActionTypes';
+import { GET_PROGRAMS } from '../constants/ActionTypes';
 
 const initialState = [
     {
         id: '',
-        title: 'asdasd',
-        tests: [],
+        title: 'asdasd'
     },
     {
         id: '',
-        title: '1234',
-        tests: [],
+        title: '1234'
     },
     {
         id: '',
-        title: '32133',
-        tests: [],
+        title: '32133'
     },
 ];
 
 
 function programListReducer(state = initialState, action) {
     switch (action.type) {
-
+        case GET_PROGRAMS:
+            return action.payload||[];
         default:
             return state;
     }

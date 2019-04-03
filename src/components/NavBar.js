@@ -11,7 +11,8 @@ class NavBar extends React.Component {
                 <button><Link to='/CreateTest'>{"Create Test"}</Link></button>
                 <button><Link to='/'>{"Test List"} </Link></button>
                 <button><Link to='/Program'>{"Create Program"} </Link></button>
-                <button><Link to='/ProgramList'>{"ProgramList"} </Link></button>
+                <button><Link to='/ProgramList'>{"Program List"} </Link></button>
+                <button><Link to='/CandidateList'>{"Candidate List"} </Link></button>
             </div>
         );
     }

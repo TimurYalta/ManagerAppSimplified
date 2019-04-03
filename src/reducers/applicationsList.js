@@ -60,7 +60,7 @@ const initialState = [
 function applicationsReducer(state = initialState, action) {
     switch(action.type) {
         case GET_APPLICATIONS:
-            return action.payload;
+            return action.payload||state;
         default:
             return state;
     }

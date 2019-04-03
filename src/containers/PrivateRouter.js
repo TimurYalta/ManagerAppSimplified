@@ -7,6 +7,7 @@ import {Switch, Route,HashRouter, Link} from 'react-router-dom';
 import LoginPage from './LoginPage';
 import ProgramList from './ProgramList';
 import Program from './Program';
+import CandidateList from './CandidateList';
 
 
 class PrivateRouter extends React.Component{
@@ -20,6 +21,7 @@ class PrivateRouter extends React.Component{
                             <Route exact path='/CreateTest' component={TestCreation}/>
                             <Route exact path='/ProgramList' component={ProgramList}/>
                             <Route exact path='/Program' component={Program}/>
+                            <Route exact path='/CandidateList' component={CandidateList}/>
                         </Switch>
                     </HashRouter> 
                 </div>

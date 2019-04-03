@@ -42,7 +42,7 @@ function accountReducer(state = initialState, action) {
         case GET_USERS:
             return {
                 ...state,
-                users: action.payload
+                users: action.payload||[]
             }
         default:
             return state;

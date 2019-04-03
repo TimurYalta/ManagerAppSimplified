@@ -27,3 +27,7 @@ export const GET_APPLICATION = 'GET_APPLICATION';
 export const MODIFY_APPLICATION = 'MODIFY_APPLICATION';
 export const CLEAR_PROGRAM = 'CLEAR_PROGRAM';
 export const LOGOUT = 'LOGOUT';
+export const GET_ME = 'GET_ME';
+export const GET_USER = 'GET_USER';
+export const GET_USERS = 'GET_USERS';
+export const REGISTER_USER = 'REGISTER_USER';

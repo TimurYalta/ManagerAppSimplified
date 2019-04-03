@@ -1,6 +1,7 @@
 import {
     SUCCESSFUL_LOGIN,
-    INCORRECT_LOGIN
+    INCORRECT_LOGIN,
+    LOGOUT
 } from '../constants/ActionTypes';
 
 import authorize from '../services/login';
@@ -23,5 +24,11 @@ export const login = (login, password) => {
                 });
             }
         })
+    }
+}
+
+export const logout = () => {
+    return {
+        type: LOGOUT
     }
 }

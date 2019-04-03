@@ -4,8 +4,7 @@ import PropTypes from 'prop-types';
 import * as TestListActions from '../actions/testsListActions';
 import { bindActionCreators } from 'redux';
 import {Link,Redirect} from 'react-router-dom';
-// import Question from '../components/Question';
-// import './style.scss';
+import NavBar from '../components/NavBar';
 
 class TestList extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -16,7 +15,10 @@ class TestList extends React.Component { // eslint-disable-line react/prefer-sta
     render() {
         return (
             <div>
-                <button><Link to='/CreateTest'>{"Create Test"}</Link></button>
+                <NavBar/>
+                {/* <button><Link to='/CreateTest'>{"Create Test"}</Link></button>
+                
+                <button><Link to='/ProgramList'>{"Program List"}</Link></button> */}
                 <button onClick={this.props.actions.getTests}>{"REfresh Test"}</button>
 
                 {this.props.testList.map(
@@ -24,7 +26,7 @@ class TestList extends React.Component { // eslint-disable-line react/prefer-sta
                         <div key={idx} style={{display:'flex', justifyContent:'space-between', border: '1px solid black', padding:'20px'}}>
                             {`Name: ${el.title}`}
                             <button onClick={(idx)=>{
-                                   this.props.actions.getQuestions(el.id, el.title);
+                                this.props.actions.getQuestions(el.id, el.title);
                                 }} >
                                 
                                 <Link to='/CreateTest'>{"Edit test"}</Link>

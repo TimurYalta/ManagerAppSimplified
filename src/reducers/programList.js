@@ -1,14 +1,30 @@
-import {GET_TESTS} from '../constants/ActionTypes';
+import { GET_TESTS } from '../constants/ActionTypes';
 
-const initialState = [];
+const initialState = [
+    {
+        id: '',
+        title: 'asdasd',
+        tests: [],
+    },
+    {
+        id: '',
+        title: '1234',
+        tests: [],
+    },
+    {
+        id: '',
+        title: '32133',
+        tests: [],
+    },
+];
 
 
 function programListReducer(state = initialState, action) {
-	switch (action.type) {
-        
+    switch (action.type) {
+
         default:
-			return state;
-	}
+            return state;
+    }
 }
 
 export default programListReducer;

@@ -3,9 +3,10 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import TestCreation from '../containers/TestCreation';
 import TestList from '../containers/TestList';
-import {Switch, Route,HashRouter} from 'react-router-dom';
+import {Switch, Route,HashRouter, Link} from 'react-router-dom';
 import LoginPage from './LoginPage';
-
+import ProgramList from './ProgramList';
+import Program from './Program';
 
 
 class PrivateRouter extends React.Component{
@@ -17,6 +18,8 @@ class PrivateRouter extends React.Component{
                         <Switch>
                             <Route exact path='/' component={TestList}/>
                             <Route exact path='/CreateTest' component={TestCreation}/>
+                            <Route exact path='/ProgramList' component={ProgramList}/>
+                            <Route exact path='/Program' component={Program}/>
                         </Switch>
                     </HashRouter> 
                 </div>

@@ -25,7 +25,6 @@ function programReducer(state = initialState, action) {
 				tests: [...state.tests, action.payload]
 			};
 		case DELETE_TEST_FROM_PROGRAM:
-
 			let tests = state.tests.filter((el) => { return el.id == action.payload });
 			return { ...state, tests };
 		case CLEAR_PROGRAM:

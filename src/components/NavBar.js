@@ -13,6 +13,7 @@ class NavBar extends React.Component {
                 <button><Link to='/Program'>{"Create Program"} </Link></button>
                 <button><Link to='/ProgramList'>{"Program List"} </Link></button>
                 <button><Link to='/CandidateList'>{"Candidate List"} </Link></button>
+                <button><Link to='/Candidate'>{"Candidate Sample"} </Link></button>
             </div>
         );
     }

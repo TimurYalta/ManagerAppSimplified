@@ -6,7 +6,7 @@ import {
 
 //The initial state of the app
 const initialState = {
-    token: ''
+    token: 's'
 };
 
 function applicationReducer(state = initialState, action) {

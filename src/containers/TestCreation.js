@@ -5,6 +5,7 @@ import * as testCreationActions from '../actions/testCreationActions';
 import { bindActionCreators } from 'redux';
 import Question from '../components/Question';
 import {Link} from 'react-router-dom';
+import NavBar from '../components/NavBar';
 // import './style.scss';
 
 class TestCreation extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -41,20 +42,21 @@ class TestCreation extends React.Component { // eslint-disable-line react/prefer
     render() {
         return (
             <div>
-                <button><Link to="/">{"Back to Test List"}</Link></button>
+                <NavBar/>
+                {/* <button><Link to="/">{"Back to Test List"}</Link></button> */}
                 <br/>
                 <label>
-                        {'Enter the test name:'}
-                    </label>
-                    <input type="text" value={this.state.name} onChange={this.changeName} />
-                    {!this.props.id?
+                    {'Enter the test name:'}
+                </label>
+                <input type="text" value={this.state.name} onChange={this.changeName} />
+                {!this.props.id?
                     <button onClick={()=>{this.props.actions.createNewTest(this.state.name)}}>
                         {"Create Test"}
                     </button>:
                     <button enabled={this.state.nameChanged} onClick ={this.submitNameChange}>
                         {"Save"}
                     </button>
-                    }
+                }
                 {this.props.id && <article>
                         <button onClick={this.props.actions.addQuestion}>
                             {"Add question"}

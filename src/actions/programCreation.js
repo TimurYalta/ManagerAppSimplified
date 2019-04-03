@@ -3,16 +3,22 @@ import {
     SET_PROGRAM_ID,
     ADD_TEST_TO_PROGRAM,
     DELETE_TEST_FROM_PROGRAM,
-    SAVE_PROGRAM
+    SAVE_PROGRAM,
+    CLEAR_PROGRAM
 } from '../constants/ActionTypes';
 
 import * as programCreation from '../services/programCreation';
 
+export const clearProgram = () => {
+    return {
+        type: CLEAR_PROGRAM
+    };
+}
 
 export const createProgram = (name) => {
     return (dispatch, getState) => {
         programsCreation.createProgram(getState().applicationReducer.token, name)
-            .then((res)=>{
+            .then((res) => {
                 dispatch(setId(res));
                 dispatch({
                     type: CREATE_PROGRAM,
@@ -36,15 +42,15 @@ export const getTests = () => {
     return (dispatch, getState) => {
         try {
             testsList.getTests(getState().applicationReducer.token)
-                .then((res)=>{
+                .then((res) => {
                     console.log(res);
                     dispatch({
                         type: GET_TESTS,
                         payload: res
                     });
                 }
-            );
-        } catch(e) {
+                );
+        } catch (e) {
             console.log(e);
         }
     }

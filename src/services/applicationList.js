@@ -3,53 +3,93 @@ var HttpStatus = require('http-status-codes');
 const SECOND = 1000;
 
 export const getApplications = (status, candidate) => {
-    return new Promise((resolve, reject) => {
-        let wait = setTimeout(() => {
-            clearTimeout(wait);
-            resolve([
-                {
-                    id: 1,
-                    program: {id:1, title:"CS Bachelor"},
-                    candidate: {id:1, name:"Mikhail Fadeev"},
-                    status : {
-                        type: "rejected",
-                        changed: 12345678,
-                        reason: "Tupoi",
-                        fixable: false
+    if (status) {
+        return new Promise((resolve, reject) => {
+            let wait = setTimeout(() => {
+                clearTimeout(wait);
+                resolve([
+                    {
+                        id: 1,
+                        program: {id:1, title:"CS Magister"},
+                        candidate: {id:1, name:"Mikhail F."},
+                        status : {
+                            type: "initial",
+                            changed: 12345678,
+                            reason: "Tupoi",
+                            fixable: false
+                        }
                     }
-                },
-                {
-                    id: 2,
-                    program: {id:1, title:"CS Bachelor"},
-                    candidate: {id:1, name:"Mikhail Fadeev"},
-                    status : {
-                        type: "initial",
-                        changed: 12345678
+                ]);
+            }, SECOND)
+        });
+    } else if (candidate) {
+        return new Promise((resolve, reject) => {
+            let wait = setTimeout(() => {
+                clearTimeout(wait);
+                resolve([
+                    {
+                        id: 1,
+                        program: {id:1, title:"CS Magister"},
+                        candidate: {id:1, name:"Bular K."},
+                        status : {
+                            type: "rejected",
+                            changed: 12345678,
+                            reason: "Tupoi",
+                            fixable: false
+                        }
                     }
-                },
-                {
-                    id: 3,
-                    program: {id:1, title:"CS Bachelor"},
-                    candidate: {id:1, name:"Mikhail Fadeev"},
-                    status : {
-                        type: "review",
-                        changed: 12345678
+                ]);
+            }, SECOND)
+        });
+    } else {
+        return new Promise((resolve, reject) => {
+            let wait = setTimeout(() => {
+                clearTimeout(wait);
+                resolve([
+                    {
+                        id: 1,
+                        program: {id:1, title:"CS Bachelor"},
+                        candidate: {id:1, name:"Mikhail Fadeev"},
+                        status : {
+                            type: "rejected",
+                            changed: 12345678,
+                            reason: "Tupoi",
+                            fixable: false
+                        }
+                    },
+                    {
+                        id: 2,
+                        program: {id:1, title:"CS Bachelor"},
+                        candidate: {id:1, name:"Mikhail Fadeev"},
+                        status : {
+                            type: "initial",
+                            changed: 12345678
+                        }
+                    },
+                    {
+                        id: 3,
+                        program: {id:1, title:"CS Bachelor"},
+                        candidate: {id:1, name:"Mikhail Fadeev"},
+                        status : {
+                            type: "review",
+                            changed: 12345678
+                        }
+                    },
+                    {
+                        id: 4,
+                        program: {id:1, title:"CS Bachelor"},
+                        candidate: {id:1, name:"Mikhail Fadeev"},
+                        status : {
+                            type: "interview",
+                            changed: 12345678,
+                            date: 13245678,
+                            interviewew: 1
+                        }
                     }
-                },
-                {
-                    id: 4,
-                    program: {id:1, title:"CS Bachelor"},
-                    candidate: {id:1, name:"Mikhail Fadeev"},
-                    status : {
-                        type: "interview",
-                        changed: 12345678,
-                        date: 13245678,
-                        interviewew: 1
-                    }
-                }
-            ]);
-        }, SECOND)
-    });
+                ]);
+            }, SECOND)
+        });
+    }
     // let url = API_BASE_URL+'/applications';
     // url = setFilters(url, status, candidate);
     // return fetch(url, 

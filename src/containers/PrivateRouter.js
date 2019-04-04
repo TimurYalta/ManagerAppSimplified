@@ -18,12 +18,16 @@ class PrivateRouter extends React.Component{
                 <div>
                     <HashRouter basename='/'>
                         <Switch>
-                            <Route exact path='/' component={TestList}/>
-                            <Route exact path='/CreateTest' component={TestCreation}/>
+                            <Route exact path='/TestList' component={TestList}/>
+                            <Route exact path='/Test' component={TestCreation}/>
                             <Route exact path='/ProgramList' component={ProgramList}/>
                             <Route exact path='/Program' component={Program}/>
                             <Route exact path='/CandidateList' component={CandidateList}/>
                             <Route exact path='/Candidate' component={Candidate}/>
+<<<<<<< Updated upstream
+=======
+                            <Route exact path='/' component={UserPage}/>
+>>>>>>> Stashed changes
                         </Switch>
                     </HashRouter> 
                 </div>

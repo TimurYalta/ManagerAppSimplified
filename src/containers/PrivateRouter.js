@@ -9,6 +9,7 @@ import ProgramList from './ProgramList';
 import Program from './Program';
 import CandidateList from './CandidateList';
 import Candidate from './Candidate';
+import UserPage from './UserPage';
 
 
 class PrivateRouter extends React.Component{
@@ -24,6 +25,7 @@ class PrivateRouter extends React.Component{
                             <Route exact path='/Program' component={Program}/>
                             <Route exact path='/CandidateList' component={CandidateList}/>
                             <Route exact path='/Candidate' component={Candidate}/>
+                            <Route exact path='/UserPage' component={UserPage}/>
                         </Switch>
                     </HashRouter> 
                 </div>

@@ -14,10 +14,14 @@ class NavBar extends React.Component {
                 <button><Link to='/ProgramList'>{"Program List"} </Link></button>
                 <button><Link to='/CandidateList'>{"Candidate List"} </Link></button>
                 <button><Link to='/Candidate'>{"Candidate Sample"} </Link></button>
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
                 <button><Link to='/'>{"User page"} </Link></button>
 >>>>>>> Stashed changes
+=======
+                <button><Link to='/UserPage'>{"User page"} </Link></button>
+>>>>>>> b57713e41427ca45a64314125c9d206a328c7ca8
             </div>
         );
     }

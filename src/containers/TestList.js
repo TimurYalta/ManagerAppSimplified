@@ -24,7 +24,7 @@ class TestList extends React.Component { // eslint-disable-line react/prefer-sta
                 {this.props.testList.map(
                     (el,idx)=>(
                         <div key={idx} style={{display:'flex', justifyContent:'space-between', border: '1px solid black', padding:'20px'}}>
-                            {`Name: ${el.title}`}
+                            {`Name: ${el.name}`}
                             <button onClick={(idx)=>{
                                     this.props.actions.getQuestions(el.id, el.name);
                                 }} >

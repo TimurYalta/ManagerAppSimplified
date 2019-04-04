@@ -61,7 +61,7 @@ class Program extends React.Component { // eslint-disable-line react/prefer-stat
                                 (test, idx) => (
                                     <div style={{}}>
                                         <div>
-                                            {test.name}
+                                            {test.title}
                                             <input
                                                 type='checkbox'
                                                 checked={this.props.tests.includes(test.id)}

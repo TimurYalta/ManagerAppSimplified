@@ -1,16 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import * as programActions from '../actions/programCreation';
+import * as candidateApplicationActions from '../actions/candidateApplication';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
 import NavBar from '../components/NavBar';
+import ChangeStatusBar from '../components/ChangeStatusBar';
 
 
 class Candidate extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
     constructor(props) {
         super(props);
+        this.state={showChangeStatusBar:false};
         this.renderStatusInfo = this.renderStatusInfo.bind(this);
     }
 
@@ -69,7 +71,25 @@ class Candidate extends React.Component { // eslint-disable-line react/prefer-st
                     <div>
                         {this.renderStatusInfo()}
                     </div>
-                    <button>{`Change status`}</button>
+                    {this.state.showChangeStatusBar?
+                        <ChangeStatusBar
+                            discardChanges={()=>(this.setState({showChangeStatusBar:false}))}
+                            type={this.props.currentStatus.type}
+                            interviewer={this.props.currentStatus.interviewer}
+                            date={this.props.currentStatus.date}
+                            comment={this.props.currentStatus.comment}
+                            reason={this.props.currentStatus.reason}
+                            fixable={this.props.currentStatus.fixable}
+                            submitStatusChange={this.props.actions.updateApplication}
+                        />:
+                        
+                        
+                        <button
+                            onClick={()=>(this.setState({showChangeStatusBar:true}))}
+                        >
+                            {`Change status`}
+                        </button>}
+                    
                 </div>
             </div>
         );
@@ -88,7 +108,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(programActions, dispatch)
+        actions: bindActionCreators(candidateApplicationActions, dispatch)
     };
 }
 

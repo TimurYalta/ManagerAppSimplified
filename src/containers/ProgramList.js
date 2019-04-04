@@ -29,7 +29,7 @@ class ProgramList extends React.Component {
                             {`Name: ${el.title}`}
                             <button
                                 onClick={() => {
-                                    this.props.actions.getPrograms(el.id, el.title);
+                                    this.props.actions.getProgram(el.id, el.title);
                                 }} >
                                 <Link to='/CreateTest'>{"Edit program"}</Link>
                             </button>

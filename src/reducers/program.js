@@ -2,7 +2,7 @@ import { CREATE_PROGRAM, SET_PROGRAM_ID,CHANGE_PROGRAM_TITLE, ADD_TEST_TO_PROGRA
 
 // The initial state of the App
 const initialState = {
-	id: '1',
+	id: '',
 	title: '',
 	tests: [],
 };

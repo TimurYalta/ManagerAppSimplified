@@ -16,7 +16,9 @@ class Program extends React.Component { // eslint-disable-line react/prefer-stat
         this.toggleTest = this.toggleTest.bind(this);
     }
 
-
+    componentWillUnmount(){
+        this.props.actions.clearProgram()
+    }
     changeTitle(e) {
         let val = e.target.value;
         this.props.actions.changeName(val);
@@ -44,7 +46,7 @@ class Program extends React.Component { // eslint-disable-line react/prefer-stat
                 </label>
                 <input type="text" value={this.props.title} onChange={this.changeTitle} />
                 {!this.props.id ?
-                    <button onClick={() => { this.props.actions.createProgram(this.props.title) }}>
+                    <button onClick={() => { this.props.actions.createProgram(this.props.title);this.props.actions.getTests();  }}>
                         {"Create Program"}
                     </button> :
                     <button onClick={this.props.actions.saveProgram}>

@@ -4,6 +4,7 @@ import {
 } from '../constants/ActionTypes';
 
 import * as programsList from '../services/programsList';
+//import {getTests} from '../services/programCreation';
 
 export const getPrograms = () => {
     return (dispatch, getState) => {
@@ -37,7 +38,7 @@ export const getProgram = (id, name) => {
 
 export const deleteProgram = (id) => {
     return (dispatch, getState) => {
-        programsList.deleteProgram(id, getState().application.token)
+        programsList.deleteProgram(getState().application.token, id)
             .then(() => {
                 dispatch(getPrograms());
             })

@@ -23,24 +23,24 @@ class TestList extends React.Component { // eslint-disable-line react/prefer-sta
             };
         }
     }
-    
+
     render() {
         return (
             <div>
                 <NavBar/>
                 {/* <button><Link to='/CreateTest'>{"Create Test"}</Link></button>
-                
+
                 <button><Link to='/ProgramList'>{"Program List"}</Link></button> */}
                 <button onClick={this.props.actions.getTests}>{"REfresh Test"}</button>
 
                 {this.props.testList.map(
                     (el,idx)=>(
                         <div key={idx} style={{display:'flex', justifyContent:'space-between', border: '1px solid black', padding:'20px'}}>
-                            {`Name: ${el.name}`}
+                            {`Name: ${el.title}`}
                             <button onClick={(idx)=>{
-                                    this.props.actions.getQuestions(el.id, el.name);
+                                    this.props.actions.getQuestions(el.id, el.title);
                                 }} >
-                                
+
                                 <Link to='/Test'>{"Edit test"}</Link>
                             </button>
                             <button onClick={(idx)=>{this.props.actions.deleteTest(el.id)}}>
@@ -70,4 +70,3 @@ export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(TestList);
-

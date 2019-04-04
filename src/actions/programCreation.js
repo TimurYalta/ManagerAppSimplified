@@ -20,13 +20,14 @@ export const clearProgram = () => {
 
 export const createProgram = (name) => {
     return (dispatch, getState) => {
-        programsCreation.createProgram(getState().application.token, name)
+        programCreation.createProgram(getState().application.token, name)
             .then((res) => {
                 dispatch(setId(res));
                 dispatch({
                     type: CREATE_PROGRAM,
                     payload: name
                 });
+                dispatch(getTests);
             })
             .catch((e) => {
                 console.log(e)

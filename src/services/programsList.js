@@ -26,7 +26,7 @@ export const getPrograms = (token) => {
 }
 
 export const deleteProgram = (token, programId) => {
-    return fetch(API_BASE_URL+'/programs/'+programId,
+    return fetch(API_BASE_URL+'/programs/'+parseInt(programId),
     {
         method: 'DELETE',
         headers: { AUTHORIZATION: token }

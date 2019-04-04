@@ -10,6 +10,18 @@ class TestList extends React.Component { // eslint-disable-line react/prefer-sta
 
     constructor(props) {
         super(props);
+        this.state = {
+            updated: false
+        };
+    }
+
+    componentDidMount() {
+        if (!this.state.updated) {
+            this.props.actions.getTests();
+            this.state = {
+                updated: true
+            };
+        }
     }
     
     render() {

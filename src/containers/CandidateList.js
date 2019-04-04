@@ -13,11 +13,21 @@ class CandidateList extends React.Component {
         super(props);
         this.state ={
             status: '',
-            candidate:''
+            candidate:'',
+            updated:false
         };
         this.changeSearchQuery = this.changeSearchQuery.bind(this);
         this.changeFilter = this.changeFilter.bind(this);
         this.applySearchAndFilter = this.applySearchAndFilter.bind(this);
+    }       
+     
+    componentDidMount() {
+        if (!this.state.updated) {
+            this.props.actions.getApplications();
+            this.state = {
+                updated: true
+            };
+        }
     }
 
     changeSearchQuery(e){
@@ -92,9 +102,9 @@ class CandidateList extends React.Component {
                                 <div>{`${el.status.type}`}</div>
                                 <button
                                     onClick={() => {
-                                        // this.props.actions.getPrograms(el.id, el.title);
+                                        this.props.actions.getApplication(el.id);
                                     }} >
-                                    <Link to='/CreateTest'>{"View Candidate"}</Link>
+                                    <Link to='/Candidate'>{"View Candidate Application"}</Link>
                                 </button>
                             </div>
                         )

@@ -8,11 +8,11 @@ export const getTests = () => {
             clearTimeout(wait);
             resolve([
                 {
-                    id:'123',
+                    id:1,
                     name:"Hueviy test",
                 },
                 {
-                    id:'456',
+                    id:2,
                     name: 'Pizdatiy test'
                 },
                 {

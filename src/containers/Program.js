@@ -32,6 +32,7 @@ class Program extends React.Component { // eslint-disable-line react/prefer-stat
     }
 
     render() {
+        console.log(this.props);
         return (
             <div>
                 <div>
@@ -43,7 +44,7 @@ class Program extends React.Component { // eslint-disable-line react/prefer-stat
                 </label>
                 <input type="text" value={this.props.title} onChange={this.changeTitle} />
                 {!this.props.id ?
-                    <button onClick={() => { this.props.actions.createNewTest(this.props.title) }}>
+                    <button onClick={() => { this.props.actions.createProgram(this.props.title) }}>
                         {"Create Program"}
                     </button> :
                     <button onClick={this.props.actions.saveProgram}>
@@ -63,7 +64,7 @@ class Program extends React.Component { // eslint-disable-line react/prefer-stat
                                             {test.name}
                                             <input
                                                 type='checkbox'
-                                                value={this.props.tests.includes(test.id)}
+                                                checked={this.props.tests.includes(test.id)}
                                                 onChange={ () => {this.toggleTest(test.id);} }
                                             />
                                         </div>
@@ -80,7 +81,7 @@ class Program extends React.Component { // eslint-disable-line react/prefer-stat
 function mapStateToProps(state) {
     return {
         id: state.program.id,
-        title: state.program.title,
+        title: state.program.name,
         tests: state.program.tests,
         testList: state.testList
     };

@@ -1,4 +1,4 @@
-import { CREATE_PROGRAM, SET_PROGRAM_ID, ADD_TEST_TO_PROGRAM, DELETE_TEST_FROM_PROGRAM, SAVE_PROGRAM, CLEAR_PROGRAM } from "../constants/ActionTypes";
+import { CREATE_PROGRAM, SET_PROGRAM_ID, ADD_TEST_TO_PROGRAM, DELETE_TEST_FROM_PROGRAM, SAVE_PROGRAM, CLEAR_PROGRAM, GET_PROGRAM } from "../constants/ActionTypes";
 
 // The initial state of the App
 const initialState = {
@@ -24,6 +24,8 @@ function programReducer(state = initialState, action) {
 				...state,
 				tests: [...state.tests, action.payload]
 			};
+		case GET_PROGRAM:
+			return action.payload;
 		case DELETE_TEST_FROM_PROGRAM:
 			let tests = state.tests.filter((el) => { return el.id == action.payload });
 			return { ...state, tests };

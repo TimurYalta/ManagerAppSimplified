@@ -7,7 +7,7 @@ import * as programsList from '../services/programsList';
 
 export const getPrograms = () => {
     return (dispatch, getState) => {
-        programsList.getPrograms(getState().applicationReducer.token)
+        programsList.getPrograms(getState().application.token)
             .then((programsList) => {
                 dispatch({
                     type: GET_PROGRAMS,
@@ -22,7 +22,7 @@ export const getPrograms = () => {
 
 export const getProgram = (id, name) => {
     return (dispatch, getState) => {
-        programsList.getProgram(id, getState().applicationReducer.token)
+        programsList.getProgramData(id, getState().application.token)
             .then((res)=>{
                 dispatch({
                     type: GET_PROGRAM,
@@ -37,7 +37,7 @@ export const getProgram = (id, name) => {
 
 export const deleteProgram = (id) => {
     return (dispatch, getState) => {
-        programsList.deleteProgram(id, getState().applicationReducer.token)
+        programsList.deleteProgram(id, getState().application.token)
             .then(() => {
                 dispatch(getPrograms());
             })

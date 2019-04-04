@@ -4,10 +4,12 @@ import {
     ADD_TEST_TO_PROGRAM,
     DELETE_TEST_FROM_PROGRAM,
     SAVE_PROGRAM,
-    CLEAR_PROGRAM
+    CLEAR_PROGRAM,
+    GET_TESTS
 } from '../constants/ActionTypes';
 
 import * as programCreation from '../services/programCreation';
+import * as testsList from '../services/testsListServices';
 
 export const clearProgram = () => {
     return {
@@ -17,7 +19,7 @@ export const clearProgram = () => {
 
 export const createProgram = (name) => {
     return (dispatch, getState) => {
-        programsCreation.createProgram(getState().applicationReducer.token, name)
+        programsCreation.createProgram(getState().application.token, name)
             .then((res) => {
                 dispatch(setId(res));
                 dispatch({
@@ -41,7 +43,7 @@ export const setId = (id) => {
 export const getTests = () => {
     return (dispatch, getState) => {
         try {
-            testsList.getTests(getState().applicationReducer.token)
+            testsList.getTests(getState().application.token)
                 .then((res) => {
                     console.log(res);
                     dispatch({
@@ -72,7 +74,9 @@ export const deleteTest = (id) => {
 
 export const saveProgram = () => {
     return (dispatch, getState) => {
-        token = getState().applicationReducer.token;
+        // token = getState().application.token;
+        //TODO: CHANGE TOKEN BACK
+        token='';
         id = getState().program.id;
         title = getState().program.title;
         tests = getState().program.tests;

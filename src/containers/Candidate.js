@@ -100,7 +100,7 @@ function mapStateToProps(state) {
     return {
         id: state.candidateApplication.id,
         candidate: state.candidateApplication.candidate,
-        currentStatus: state.candidateApplication.history.reduceRight(a => a),
+        currentStatus: state.candidateApplication.history.length?state.candidateApplication.history.reduceRight(a => a):{type:'initial'},
         testResults: state.candidateApplication.test_attempts
 
     };

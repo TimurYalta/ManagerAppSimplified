@@ -4,36 +4,46 @@ import {
 } from '../constants/ActionTypes'
 
 const initialState = {
-    id: 1,
+    // id: 1,
+    // test_attempts: [
+    //     {
+    //         id: 1,
+    //         test_id:2,
+    //         grade: 14.5
+    //     },
+    //     {
+    //         id: 2,
+    //         test_id:3,
+    //         grade: 74.5
+    //     }
+    // ],
+    // candidate: {
+    //     id: 1,
+    //     name: "Mikhail Fadeev"
+    // },
+    // history:[
+    //     {
+    //         type: "initial",
+    //         changed: 12345678
+    //     },
+    //     {
+    //         type: "accepted",
+    //         changed: 12345678,
+    //         interviewer:21342,
+    //         comment:'loh',
+    //         reason: "Tupoi",
+    //         fixable: false
+    //     }
+    // ]
+    id: "",
     test_attempts: [
-        {
-            id: 1,
-            test_id:2,
-            grade: 14.5
-        },
-        {
-            id: 2,
-            test_id:3,
-            grade: 74.5
-        }
     ],
     candidate: {
-        id: 1,
-        name: "Mikhail Fadeev"
+        id: '',
+        name: ''
     },
     history:[
-        {
-            type: "initial",
-            changed: 12345678
-        },
-        {
-            type: "accepted",
-            changed: 12345678,
-            interviewer:21342,
-            comment:'loh',
-            reason: "Tupoi",
-            fixable: false
-        }
+        
     ]
 };
 

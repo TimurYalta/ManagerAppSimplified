@@ -1,7 +1,8 @@
 import {
     GET_ME,
     GET_USERS,
-    GET_USER
+    GET_USER,
+    REGISTER_USER
 } from '../constants/ActionTypes';
 
 const initialState = {
@@ -44,6 +45,8 @@ function accountReducer(state = initialState, action) {
                 ...state,
                 users: action.payload||[]
             }
+        case REGISTER_USER:
+            return initialState;
         default:
             return state;
     }

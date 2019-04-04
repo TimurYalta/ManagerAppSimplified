@@ -5,6 +5,7 @@ import {
     DELETE_TEST_FROM_PROGRAM,
     SAVE_PROGRAM,
     CLEAR_PROGRAM,
+    CHANGE_PROGRAM_TITLE,
     GET_TESTS
 } from '../constants/ActionTypes';
 
@@ -37,6 +38,13 @@ export const setId = (id) => {
     return {
         type: SET_PROGRAM_ID,
         payload: id
+    };
+}
+
+export const changeName = (name) => {
+    return {
+        type:CHANGE_PROGRAM_TITLE,
+        payload: name
     };
 }
 
@@ -74,12 +82,12 @@ export const deleteTest = (id) => {
 
 export const saveProgram = () => {
     return (dispatch, getState) => {
-        // token = getState().application.token;
+        const token = getState().application.token;
         //TODO: CHANGE TOKEN BACK
-        token='';
-        id = getState().program.id;
-        title = getState().program.title;
-        tests = getState().program.tests;
+        //token='';
+        const id = getState().program.id;
+        const title = getState().program.name;
+        const tests = getState().program.tests;
         programCreation.modifyProgram(token, id, title, tests)
             .then(() => {
                 dispatch({

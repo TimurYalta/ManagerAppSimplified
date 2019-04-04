@@ -19,7 +19,7 @@ class Program extends React.Component { // eslint-disable-line react/prefer-stat
 
     changeTitle(e) {
         let val = e.target.value;
-        this.props.actions.changeTitle(val);
+        this.props.actions.changeName(val);
     }
 
     toggleTest(id) {

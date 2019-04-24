@@ -11,9 +11,22 @@ class ProgramList extends React.Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            updated: false
+        };
+    }
+
+    componentDidMount() {
+        if (!this.state.updated) {
+            this.props.actions.getPrograms();
+            this.state = {
+                updated: true
+            };
+        }
     }
 
     render() {
+        console.log(this.props)
         return (
             <div>
                 <NavBar />
@@ -31,7 +44,7 @@ class ProgramList extends React.Component {
                                 onClick={() => {
                                     this.props.actions.getProgram(el.id, el.title);
                                 }} >
-                                <Link to='/CreateTest'>{"Edit program"}</Link>
+                                <Link to='/Program'>{"Edit program"}</Link>
                             </button>
                             <button
                                 onClick={() => { this.props.actions.deleteProgram(el.id) }}>
@@ -53,7 +66,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(ProgramActions, dispatch)
+        actions: bindActionCreators(ProgramActions, dispatch),
+
     };
 }
 

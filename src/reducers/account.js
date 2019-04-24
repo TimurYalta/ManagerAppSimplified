@@ -6,25 +6,33 @@ import {
 } from '../constants/ActionTypes';
 
 const initialState = {
+    // me: {
+    //     id:1,
+    //     name: "Bulat Khabirov",
+    //     role: "staff",
+    //     email: "b.khabirov@innopolis.ru"
+    // },
+    // users: [
+    //     {
+    //         id:1,
+    //         name: "Bulat Khabirov",
+    //         role: "staff",
+    //         email: "b.khabirov@innopolis.ru"
+    //     },
+    //     {
+    //         id:2,
+    //         name: "Mikhail Fadeev",
+    //         role: "candidate",
+    //         email: "idzeti@gmail.com"
+    //     },
+    // ]
     me: {
-        id:1,
-        name: "Bulat Khabirov",
-        role: "staff",
-        email: "b.khabirov@innopolis.ru"
+        id:'',
+        name: '',
+        role: '',
+        email: ''
     },
     users: [
-        {
-            id:1,
-            name: "Bulat Khabirov",
-            role: "staff",
-            email: "b.khabirov@innopolis.ru"
-        },
-        {
-            id:2,
-            name: "Mikhail Fadeev",
-            role: "candidate",
-            email: "idzeti@gmail.com"
-        },
     ]
 };
 

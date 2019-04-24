@@ -1,18 +1,18 @@
 import { GET_PROGRAMS } from '../constants/ActionTypes';
 
 const initialState = [
-    {
-        id: '',
-        title: 'asdasd'
-    },
-    {
-        id: '',
-        title: '1234'
-    },
-    {
-        id: '',
-        title: '32133'
-    },
+    // {
+    //     id: '',
+    //     title: 'asdasd'
+    // },
+    // {
+    //     id: '',
+    //     title: '1234'
+    // },
+    // {
+    //     id: '',
+    //     title: '32133'
+    // },
 ];
 
 

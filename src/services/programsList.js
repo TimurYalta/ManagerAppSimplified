@@ -1,5 +1,6 @@
 import { API_BASE_URL, AUTHORIZATION } from '../constants/Constants';
 var HttpStatus = require('http-status-codes');
+const SECOND = 1000;
 
 export const getPrograms = (token) => {
     return fetch(API_BASE_URL+'/programs',
@@ -25,7 +26,7 @@ export const getPrograms = (token) => {
 }
 
 export const deleteProgram = (token, programId) => {
-    return fetch(API_BASE_URL+'/programs/'+programId,
+    return fetch(API_BASE_URL+'/programs/'+parseInt(programId),
     {
         method: 'DELETE',
         headers: { AUTHORIZATION: token }
@@ -41,7 +42,7 @@ export const deleteProgram = (token, programId) => {
     });
 }
 
-export const getProgramData = (token, programId) => {
+export const getProgramData = (programId, token) => {
     return fetch(API_BASE_URL+'/programs/'+programId,
     {
         method: 'GET',

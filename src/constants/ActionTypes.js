@@ -31,3 +31,4 @@ export const GET_ME = 'GET_ME';
 export const GET_USER = 'GET_USER';
 export const GET_USERS = 'GET_USERS';
 export const REGISTER_USER = 'REGISTER_USER';
+export const CHANGE_PROGRAM_TITLE='CHANGE_PROGRAM_TITLE';

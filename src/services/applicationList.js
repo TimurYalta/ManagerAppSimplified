@@ -1,10 +1,11 @@
 import { API_BASE_URL, AUTHORIZATION } from '../constants/Constants';
 var HttpStatus = require('http-status-codes');
+const SECOND = 1000;
 
 export const getApplications = (status, candidate) => {
     let url = API_BASE_URL+'/applications';
     url = setFilters(url, status, candidate);
-    return fetch(url, 
+    return fetch(url,
         {
             method: 'GET',
         }
@@ -27,7 +28,7 @@ export const getApplications = (status, candidate) => {
 }
 
 export const getApplication = (id) => {
-    return fetch(API_BASE_URL+'/applications/'+id, 
+    return fetch(API_BASE_URL+'/applications/'+id,
         {
             method: 'GET',
         }
@@ -50,7 +51,7 @@ export const getApplication = (id) => {
 }
 
 export const updateApplicationStatus = (status, id) => {
-    return fetch(API_BASE_URL+'/applications/'+id, 
+    return fetch(API_BASE_URL+'/applications/'+id,
         {
             method: 'PUT',
             body: JSON.stringify(status),

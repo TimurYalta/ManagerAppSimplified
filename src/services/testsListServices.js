@@ -1,8 +1,8 @@
 import {API_BASE_URL} from '../constants/Constants';
 var HttpStatus = require('http-status-codes');
+const SECOND = 1000;
 
 export const getTests = () => {
-    console.log(API_BASE_URL+'/tests');
     return fetch(API_BASE_URL+'/tests',
         {
             method: 'GET'

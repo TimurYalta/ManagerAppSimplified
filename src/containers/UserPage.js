@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import * as candidateApplicationActions from '../actions/candidateApplication';
+import * as accountActions from '../actions/account';
+import {logout} from '../actions/loginActions'; 
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
 import NavBar from '../components/NavBar';
@@ -10,7 +11,21 @@ class UserPage extends React.Component { // eslint-disable-line react/prefer-sta
 
     constructor(props) {
         super(props);
+        this.state = {
+            updated: false
+        };
     }
+
+    componentDidMount() {
+        if (!this.state.updated) {
+            this.props.actions.getUser();
+            this.props.actions.getUsers();
+            this.state = {
+                updated: true
+            };
+        }
+    }
+
 
     render() {
         return (
@@ -20,18 +35,20 @@ class UserPage extends React.Component { // eslint-disable-line react/prefer-sta
                 </div>
                 <br />
                 <div>
-                    <div>{`Name: ${this.props.name}`}</div> 
+                    <div>{`Name: ${this.props.name}`}</div>
                     <div>{`Role: ${this.props.role}`}</div>
                     <div>{`Email: ${this.props.email}`}</div>
-                    <div style={{border:"1px solid black"}}>
+                    
+                    <button onClick={this.props.logout}>{"Logout"}</button>
+                    <div style={{ border: "1px solid black" }}>
                         {'Users: '}
-                        {this.props.users.map((e)=>{
-                            return <div style={{border:"1px solid gray", display:'flex', justifyContent:'space-between'}}>
-                                    <div>{`Name: ${e.name}`}</div> 
-                                    <div>{`Role: ${e.role}`}</div>
-                                    <div>{`Email: ${e.email}`}</div>   
-                                </div>;
-                            })
+                        {this.props.users.map((e) => {
+                            return <div style={{ border: "1px solid gray", display: 'flex', justifyContent: 'space-between' }}>
+                                <div>{`Name: ${e.name}`}</div>
+                                <div>{`Role: ${e.role}`}</div>
+                                <div>{`Email: ${e.email}`}</div>
+                            </div>;
+                        })
                         }
 
                     </div>
@@ -54,7 +71,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(candidateApplicationActions, dispatch)
+        actions: bindActionCreators(accountActions, dispatch),
+        logout: bindActionCreators(logout, dispatch),
     };
 }
 

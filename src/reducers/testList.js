@@ -1,18 +1,18 @@
 import {GET_TESTS} from '../constants/ActionTypes';
 
 const initialState = [
-	{
-		id:'123',
-		name:"Hueviy test",
-	},
-	{
-		id:'456',
-		name: 'Pizdatiy test'
-	},
-	{
-		id:'poshli nahui',
-		name: 'sosat'
-	}
+	// {
+	// 	id:'123',
+	// 	name:"Hueviy test",
+	// },
+	// {
+	// 	id:'456',
+	// 	name: 'Pizdatiy test'
+	// },
+	// {
+	// 	id:'poshli nahui',
+	// 	name: 'sosat'
+	// }
 ];
 
 

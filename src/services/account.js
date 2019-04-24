@@ -1,5 +1,6 @@
 import { API_BASE_URL, AUTHORIZATION } from '../constants/Constants';
 var HttpStatus = require('http-status-codes');
+const SECOND = 1000;
 
 export const getUserData = (id) => {
     let url = API_BASE_URL + '/users/';
@@ -62,7 +63,7 @@ export const registerUser = (name, role, email) => {
                 role: role,
                 email: email
             },
-            headers: {'content-type':'application/json'} 
+            headers: {'content-type':'application/json'}
         }
     )
     .then((response) => {

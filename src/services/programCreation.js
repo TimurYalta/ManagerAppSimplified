@@ -18,7 +18,7 @@ export const createProgram = (token, title) => {
     )
     .then((response) => {
         console.log(response.status + " " + response.statusText);
-        if (response.status == HttpStatus.CREATED) {
+        if (response.status == HttpStatus.OK) {
             return response.clone().json()
                 .then((data) => {
                     console.log('program_id:'+data.id);

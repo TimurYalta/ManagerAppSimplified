@@ -12,6 +12,7 @@ import Candidate from './Candidate';
 import UserPage from './UserPage';
 
 
+
 class PrivateRouter extends React.Component{
     render(){
         if (this.props.token){

@@ -87,44 +87,25 @@ input {
   letter-spacing: 3px;
 }
 
-  button {
-    background-color: $white;
-    height: 30px;
-    width: 74%;
-    display: flex;
-    margin: auto;
-    margin-top: 6px;
-    text-align: center;
-    justify-content: center;
-    font-size: 10pt;
-    align-self: center;
-    border: 1px solid $accent-gray;
-  }
 
-  button:hover {
-    background-color: $accent-gray;
-  }
+button {
+    height: 64px;
+}
 
-footer {
-  font-size: 0.75em;
+button:hover {
+  background-color: $accent-gray;
+}
+
+button>span {
+  align-self: center;
   text-align: center;
-  padding-top: 10em;
+  height: 95%;
+  width: 90%;
+}
 
-  a {
+
+ a {
     text-decoration: none;
-    color: inherit;
-
-    &:hover {
-      color: $accent-blue;
-    }
+    color: $accent-gray;
   }
 
-  #heart{
-    color: $accent-red;
-  }
-}
-
-.data-reactid>a {
-  text-decoration: none;
-  font-size: 6pt;
-}

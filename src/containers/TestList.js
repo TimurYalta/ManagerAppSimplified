@@ -5,6 +5,7 @@ import * as TestListActions from '../actions/testsListActions';
 import { bindActionCreators } from 'redux';
 import {Link,Redirect} from 'react-router-dom';
 import NavBar from '../components/NavBar';
+import '../styles/tList.scss';
 
 class TestList extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
@@ -35,7 +36,8 @@ class TestList extends React.Component { // eslint-disable-line react/prefer-sta
 
                 {this.props.testList.map(
                     (el,idx)=>(
-                        <div key={idx} style={{display:'flex', justifyContent:'space-between', border: '1px solid black', padding:'20px'}}>
+                        <div className={'tList'} key={idx} style={{display:'flex', justifyContent:'space-between',
+                            border: '1px solid black', padding:'20px', borderRadius:'2px', width:''}}>
                             {`Name: ${el.title}`}
                             <button onClick={(idx)=>{
                                     this.props.actions.getQuestions(el.id, el.title);

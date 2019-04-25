@@ -1,0 +1,91 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:100,400);
+
+$white: #fff;
+$main-bg-color: #f1f2f0;
+$accent-blue: #37bbe4;
+$accent-gray: #e1e0dd;
+$accent-black: #35342f;
+$accent-orange: #ec6b2d;
+$accent-red: #dd6464;
+
+body {
+    background-color: $main-bg-color;
+    color: $accent-black;
+    display: flex;
+    justify-content: center;
+    font-family: 'Raleway', sans-serif;
+}
+
+#root {
+    display: flex;
+    justify-content: center;
+    flex-wrap: column;
+    margin: 0 auto;
+    width: 64%;
+}
+
+.data-reactid {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.main-app-container {
+    padding-top: 2em;
+    width: 260px;
+}
+
+.main-app-nav {
+    font-size: 2em;
+    text-align: center;
+    align-self: center;
+    white-space: nowrap;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.head-b {
+    width: 80px;
+    border-radius: 5px 0 5px 0;
+}
+
+
+
+.counter-num-label {
+    color: $accent-orange;
+    padding-top: 1em;
+    font-size: 3em;
+    text-align: center;
+    width: 100%;
+}
+
+label .data-reactid {
+    margin-top: 12px;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-between;
+}
+
+.nv-bt>Link {
+    font-size: 6pt;
+}
+
+button {
+    height: 64px;
+}
+
+
+a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 12pt;
+    font-weight: 400;
+}
+
+span {
+    text-decoration: none;
+    color: inherit;
+    font-size: 12pt;
+}

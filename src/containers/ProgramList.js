@@ -5,6 +5,7 @@ import * as ProgramActions from '../actions/programsList';
 import { bindActionCreators } from 'redux';
 import { Link, Redirect } from 'react-router-dom';
 import NavBar from '../components/NavBar';
+import '../styles/main.scss';
 
 
 class ProgramList extends React.Component {

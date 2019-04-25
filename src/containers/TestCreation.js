@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 import Question from '../components/Question';
 import {Link} from 'react-router-dom';
 import NavBar from '../components/NavBar';
-// import './style.scss';
+//import './style2.scss';//
 
 class TestCreation extends React.Component { // eslint-disable-line react/prefer-stateless-function
 

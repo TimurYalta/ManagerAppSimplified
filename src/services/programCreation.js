@@ -12,7 +12,7 @@ export const createProgram = (token, title) => {
             ),
             headers: {
                 'content-type': 'application/json',
-                AUTHORIZATION: token
+                "Authorization": token
             }
         }
     )
@@ -43,7 +43,7 @@ export const modifyProgram = (token, programId, title, tests) => {
             }),
             headers: {
                 'content-type': 'application/json',
-                AUTHORIZATION: token
+                "Authorization": token
             }
         }
     )

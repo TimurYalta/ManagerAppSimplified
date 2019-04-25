@@ -2,10 +2,11 @@ import {API_BASE_URL} from '../constants/Constants';
 var HttpStatus = require('http-status-codes');
 const SECOND = 1000;
 
-export const getTests = () => {
+export const getTests = (token) => {
     return fetch(API_BASE_URL+'/tests',
         {
-            method: 'GET'
+            method: 'GET',
+            headers: {"Authorization":token}
         }
     )
     .then((response) => {
@@ -25,10 +26,11 @@ export const getTests = () => {
     });
 }
 
-export const deleteTest = (testId) => {
+export const deleteTest = (testId, token) => {
     return fetch(API_BASE_URL+'/tests/' + testId,
         {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {"Authorization":token}
         }
     )
     .then((response) => {
@@ -42,10 +44,11 @@ export const deleteTest = (testId) => {
     });
 }
 
-export const getQuestions = (testId) => {
+export const getQuestions = (testId,token) => {
     return fetch(API_BASE_URL+'/tests/'+testId+'/questions',
         {
-            method: 'GET'
+            method: 'GET',
+            headers: {"Authorization":token}
         }
     )
     .then((response) => {

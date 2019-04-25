@@ -8,10 +8,10 @@ import authorize from '../services/login';
 var HttpStatus = require('http-status-codes');
 //TODO: Change back
 export const login = (login, password) => {
-    if(login=="admin" && password=="admin") {
+    if(login=="b.khabirov@innopolis.ru" && password=="bulat") {
         return {
             type: SUCCESSFUL_LOGIN,
-            payload: "token"
+            payload: "9b94238fa82c65ae69e7c1a4262f153321109338"
         };
     } else {
         alert("Incorrect login/password");

@@ -6,7 +6,7 @@ export const getPrograms = (token) => {
     return fetch(API_BASE_URL+'/programs',
     {
         method: 'GET',
-        headers: { AUTHORIZATION: token }
+        headers: { "Authorization": token }
     })
     .then((response) => {
         console.log(response.status + " " + response.statusText);
@@ -29,7 +29,7 @@ export const deleteProgram = (token, programId) => {
     return fetch(API_BASE_URL+'/programs/'+parseInt(programId),
     {
         method: 'DELETE',
-        headers: { AUTHORIZATION: token }
+        headers: { "Authorization": token }
     })
     .then((response) => {
         console.log(response.status + " " + response.statusText);
@@ -46,7 +46,7 @@ export const getProgramData = (programId, token) => {
     return fetch(API_BASE_URL+'/programs/'+programId,
     {
         method: 'GET',
-        headers: { AUTHORIZATION: token }
+        headers: { "Authorization": token }
     })
     .then((response) => {
         console.log(response.status + " " + response.statusText);

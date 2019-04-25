@@ -2,7 +2,7 @@ import { API_BASE_URL, AUTHORIZATION } from '../constants/Constants';
 var HttpStatus = require('http-status-codes');
 const SECOND = 1000;
 
-export const getUserData = (id) => {
+export const getUserData = (id, token) => {
     let url = API_BASE_URL + '/users/';
     if(id) {
         url += id;
@@ -11,7 +11,8 @@ export const getUserData = (id) => {
     }
     return fetch(url,
         {
-            method: 'GET'
+            method: 'GET',
+            headers:{"Authorization":token}
         }
     )
     .then((response) => {
@@ -31,10 +32,11 @@ export const getUserData = (id) => {
     });
 }
 
-export const getUsers = () => {
+export const getUsers = (token) => {
     return fetch(API_BASE_URL+"/users",
         {
-            method: 'GET'
+            method: 'GET',
+            headers:{"Authorization":token}
         }
     )
     .then((response) => {
@@ -54,7 +56,7 @@ export const getUsers = () => {
     });
 }
 
-export const registerUser = (name, role, email) => {
+export const registerUser = (name, role, email, token) => {
     return fetch(API_BASE_URL+'/users/new',
         {
             method: 'POST',
@@ -63,7 +65,7 @@ export const registerUser = (name, role, email) => {
                 role: role,
                 email: email
             },
-            headers: {'content-type':'application/json'}
+            headers: {'content-type':'application/json', "Authorization":token},
         }
     )
     .then((response) => {

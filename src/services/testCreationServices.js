@@ -1,7 +1,7 @@
-import {API_BASE_URL} from '../constants/Constants';
+import {API_BASE_URL, AUTHORIZATION} from '../constants/Constants';
 var HttpStatus = require('http-status-codes');
 
-export const createTest = (name) => {
+export const createTest = (name, token) => {
     return fetch(API_BASE_URL+'/tests',
         {
             method: 'POST',
@@ -10,7 +10,7 @@ export const createTest = (name) => {
                     title:name
                 }
             ),
-            headers: {'content-type': 'application/json'}
+            headers: {'content-type': 'application/json', "Authorization":token}
         }
     )
     .then((response) => {
@@ -30,14 +30,14 @@ export const createTest = (name) => {
     });
 }
 
-export const modifyTest = (testId, title) => {
+export const modifyTest = (testId, title, token) => {
     return fetch(API_BASE_URL+'tests/'+testId,
         {
             method: 'PUT',
             body: JSON.stringify({
                 title: title
             }),
-            headers: {'content-type': 'application/json'}
+            headers: {'content-type': 'application/json', "Authorization":token}
         }
     )
     .then((response) => {
@@ -51,13 +51,13 @@ export const modifyTest = (testId, title) => {
     })
 }
 
-export const createQuestion = (testId, question) => {
+export const createQuestion = (testId, question, token) => {
 
     return fetch(API_BASE_URL+'/tests/'+testId+'/questions',
         {
             method: 'POST',
             body: JSON.stringify(question),
-            headers: {'content-type': 'application/json'}
+            headers: {'content-type': 'application/json', "Authorization":token}
         }
     )
     .then((response) => {
@@ -71,12 +71,12 @@ export const createQuestion = (testId, question) => {
     });
 }
 
-export const modifyQuestion = (testId, questionNumber, question) => {
+export const modifyQuestion = (testId, questionNumber, question, token) => {
     return fetch(API_BASE_URL+'/tests/'+testId+'/questions/'+questionNumber,
         {
             method: 'PUT',
             body: JSON.stringify(question),
-            headers: {'content-type': 'application/json'}
+            headers: {'content-type': 'application/json', "Authorization":token}
         }
     )
     .then((response) => {
@@ -90,10 +90,11 @@ export const modifyQuestion = (testId, questionNumber, question) => {
     });
 }
 
-export const deleteQuestion = (testId, questionNumber) => {
+export const deleteQuestion = (testId, questionNumber, token) => {
     return fetch(API_BASE_URL+'/tests/'+testId+'/questions/'+questionNumber,
         {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {"Authorization":token}
         }
     )
     .then((response) => {

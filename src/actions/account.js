@@ -9,7 +9,8 @@ import * as account from '../services/account';
 
 export const getUser = (id) => {
     return (dispatch, getState) => {
-        account.getUserData(id)
+        const token = getState().application.token;
+        account.getUserData(id, token)
             .then((data) => {
                 if (id) {
                     dispatch({
@@ -31,7 +32,8 @@ export const getUser = (id) => {
 
 export const getUsers = () => {
     return (dispatch, getState) => {
-        account.getUsers()
+        const token = getState().application.token;
+        account.getUsers(token)
             .then((data) => {
                 dispatch({
                     type: GET_USERS,
@@ -46,7 +48,8 @@ export const getUsers = () => {
 
 export const registerUser = (name, role, email) => {
     return (dispatch, getState) => {
-        account.registerUser(name, role, email)
+        const token = getState().application.token;
+        account.registerUser(name, role, email, token)
             .then(() => {
                 alert("User has been registered");
                 dispatch({

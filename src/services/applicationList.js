@@ -2,12 +2,13 @@ import { API_BASE_URL, AUTHORIZATION } from '../constants/Constants';
 var HttpStatus = require('http-status-codes');
 const SECOND = 1000;
 
-export const getApplications = (status, candidate) => {
+export const getApplications = (status, candidate, token) => {
     let url = API_BASE_URL+'/applications';
     url = setFilters(url, status, candidate);
     return fetch(url,
         {
             method: 'GET',
+            headers:{"Authorization":token}
         }
     )
     .then((response) => {
@@ -27,10 +28,11 @@ export const getApplications = (status, candidate) => {
     });
 }
 
-export const getApplication = (id) => {
+export const getApplication = (id, token) => {
     return fetch(API_BASE_URL+'/applications/'+id,
         {
             method: 'GET',
+            headers:{"Authorization":token}
         }
     )
     .then((response) => {
@@ -50,12 +52,12 @@ export const getApplication = (id) => {
     });
 }
 
-export const updateApplicationStatus = (status, id) => {
+export const updateApplicationStatus = (status, id, token) => {
     return fetch(API_BASE_URL+'/applications/'+id,
         {
             method: 'PUT',
             body: JSON.stringify(status),
-            headers: {'content-type':'application/json'}
+            headers: {'content-type':'application/json', "Authorization":token}
         }
     )
     .then((response) => {

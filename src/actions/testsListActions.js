@@ -23,9 +23,10 @@ import * as testsList from '../services/testsListServices';
 import { parseQuestionFromJSON } from '../utils/utils';
 
 export const getTests = () => {
-    return (dispatch) => {
+    return (dispatch, getState) => {
         try {
-            testsList.getTests()
+            const token = getState().application.token;
+            testsList.getTests(token)
                 .then((res)=>{
                     console.log(res);
                     dispatch({
@@ -39,9 +40,10 @@ export const getTests = () => {
 }
 
 export const deleteTest = (testId) => {
-    return (dispatch) => {
+    return (dispatch, getState) => {
         try {
-            testsList.deleteTest(testId)
+            const token = getState().application.token;
+            testsList.deleteTest(testId, token)
                 .then(()=>{
                     dispatch(getTests())
                 }
@@ -51,9 +53,10 @@ export const deleteTest = (testId) => {
 }
 
 export const getQuestions = (testId, title) => {
-    return (dispatch) => {
+    return (dispatch, getState) => {
         try {
-            testsList.getQuestions(testId)
+            const token = getState().application.token;
+            testsList.getQuestions(testId, token)
             .then((data) => {
                 let questions = [];
                 for(let question of data) {

@@ -20,7 +20,8 @@ export const clearProgram = () => {
 
 export const createProgram = (name) => {
     return (dispatch, getState) => {
-        programCreation.createProgram(getState().application.token, name)
+        const token = getState().application.token;
+        programCreation.createProgram(token, name)
             .then((res) => {
                 dispatch(setId(res));
                 dispatch({

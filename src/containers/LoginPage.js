@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as loginActions from '../actions/loginActions';
+import '../styles/main.scss';
 
 
 class LoginPage extends React.Component{

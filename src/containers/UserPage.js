@@ -40,7 +40,7 @@ class UserPage extends React.Component { // eslint-disable-line react/prefer-sta
                     <div>{`Email: ${this.props.email}`}</div>
                     
                     <button onClick={this.props.logout}>{"Logout"}</button>
-                    <div style={{ border: "1px solid black" }}>
+                    <div style={{ border: "2px solid black", opacity: '0.2', borderRadius: "12px" }}>
                         {'Users: '}
                         {this.props.users.map((e) => {
                             return <div style={{ border: "1px solid gray", display: 'flex', justifyContent: 'space-between' }}>

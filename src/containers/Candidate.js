@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import ChangeStatusBar from '../components/ChangeStatusBar';
+import '../styles/prof.scss';
 
 
 class Candidate extends React.Component { // eslint-disable-line react/prefer-stateless-function

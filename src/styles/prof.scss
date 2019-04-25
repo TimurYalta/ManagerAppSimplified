@@ -19,7 +19,9 @@ body {
 #root {
   display: flex;
   justify-content: center;
+  flex-wrap: column;
   margin: 0 auto;
+  width: 64%;
 }
 
 .data-reactid {
@@ -59,72 +61,24 @@ label .data-reactid {
   justify-content: space-between;
 }
 
-label {
-  display: flex;
-  flex-flow: column;
-  flex-wrap: wrap;
-  word-wrap: break-spaces;
-  white-space: pre-wrap;
+.nv-bt>Link {
+    font-size: 6pt;
 }
 
-span {
-  align-self: center;
-  font-size: 18pt;
-}
-
-input {
-  width: 94%;
-  height: 18px;
+button {
+    height: 64px;
 }
 
 
-
-.counter-even-label {
-  padding-top: 1em;
-  font-size: 0.75em;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-}
-
-  button {
-    background-color: $white;
-    height: 30px;
-    width: 74%;
-    display: flex;
-    margin: auto;
-    margin-top: 6px;
-    text-align: center;
-    justify-content: center;
-    font-size: 10pt;
-    align-self: center;
-    border: 1px solid $accent-gray;
-  }
-
-  button:hover {
-    background-color: $accent-gray;
-  }
-
-footer {
-  font-size: 0.75em;
-  text-align: center;
-  padding-top: 10em;
-
-  a {
+ a {
     text-decoration: none;
     color: inherit;
-
-    &:hover {
-      color: $accent-blue;
-    }
+    font-size: 12pt;
+    font-weight: 400;
   }
 
-  #heart{
-    color: $accent-red;
+  span {
+      text-decoration: none;
+      color: inherit;
+      font-size: 12pt;
   }
-}
-
-.data-reactid>a {
-  text-decoration: none;
-  font-size: 6pt;
-}

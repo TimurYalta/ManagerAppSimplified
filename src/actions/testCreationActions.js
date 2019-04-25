@@ -37,9 +37,10 @@ import { parseQuestionToJSON } from '../utils/utils';
  * @return {object}    An action object with a type of CREATE_NEW_TEST
  */
 export const createNewTest = (name) => {
-    return (dispatch) => {
+    return (dispatch, getState) => {
         try {
-            testCreation.createTest(name)
+            const token = getState().application.token;
+            testCreation.createTest(name, token)
                 .then((res)=>{
                     dispatch(setId(res.test_id));
                     dispatch({
@@ -62,7 +63,8 @@ export const setId = (id) => {
 export const changeName = (name) => {
     return (dispatch,getState) => {
         try {
-            testCreation.modifyTest(getState().testCreation.id, name)
+            const token = getState().application.token;
+            testCreation.modifyTest(getState().testCreation.id, name, token)
             .then(()=>{
                 dispatch({
                     type: CHANGE_NAME,
@@ -70,7 +72,9 @@ export const changeName = (name) => {
                 });
             }
             );
-        } catch(e) {}
+        } catch(e) {
+            console.log(e);
+        }
     }
 }
 
@@ -83,8 +87,9 @@ export const addQuestion = () => {
 export const saveQuestion = (questionNumber, question) => {
     return (dispatch, getState) => {
         try {
+            const token = getState().application.token;
             let testId = getState().testCreation.id;
-            testCreation.createQuestion(testId, parseQuestionToJSON(question))
+            testCreation.createQuestion(testId, parseQuestionToJSON(question), token)
             .then(() => {
                 dispatch(
                     {
@@ -93,15 +98,18 @@ export const saveQuestion = (questionNumber, question) => {
                     }
                 );
             });
-        } catch(e) {}
+        } catch(e) {
+            console.log(e);
+        }
     };
 }
 
 export const modifyQuestion = (questionNumber, question) => {
     return (dispatch, getState) => {
         try {
+            const token = getState().application.token;
             let testId = getState().testCreation.id;
-            testCreation.modifyQuestion(testId, questionNumber, parseQuestionToJSON(question))
+            testCreation.modifyQuestion(testId, questionNumber, parseQuestionToJSON(question), token)
             .then(() => {
                 dispatch(
                     {
@@ -110,15 +118,18 @@ export const modifyQuestion = (questionNumber, question) => {
                     }
                 )
             });
-        } catch (e) {}
+        } catch(e) {
+            console.log(e);
+        }
     }
 }
 
 export const deleteQuestion = (questionNumber) => {
     return(dispatch, getState) => {
         try {
+            const token = getState().application.token;
             let testId = getState().testCreation.id;
-            testCreation.deleteQuestion(testId, questionNumber)
+            testCreation.deleteQuestion(testId, questionNumber, token)
             .then(() => {
                 dispatch(
                     {
@@ -127,7 +138,9 @@ export const deleteQuestion = (questionNumber) => {
                     }
                 )
             });
-        } catch(e) {}
+        } catch(e) {
+            console.log(e);
+        }
     }
 }
 

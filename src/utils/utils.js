@@ -1,6 +1,8 @@
 import { QUESTION_TYPES } from "../constants/Constants";
 
 export const parseQuestionFromJSON = (question) => {
+    console.log("Prishel: ")
+    console.log(question);
     switch(question.type) {
         case QUESTION_TYPES.TEXT:
             return {
@@ -10,21 +12,25 @@ export const parseQuestionFromJSON = (question) => {
                 isCreated:true
             }
         case QUESTION_TYPES.RADIO:
+            let variants1 = question.variants.correct.map((el)=>{return el.text});
+            variants1 = [...variants1, ...question.variants.other.map((el) => {return el.text})];
             return {
                 type: QUESTION_TYPES.RADIO,
                 description: question.description,
-                variants: question.variants.map((el)=>{return el.text }),
-                right: question.answer.map((el)=>{return el-1}),
+                variants: variants1,
+                right: question.variants.correct.map((el, idx)=>{return idx}),
                 isCreated:true
             }
         case QUESTION_TYPES.CHECK:
-            return {
-                type: QUESTION_TYPES.CHECK,
-                description: question.description,
-                variants: question.variants.map((el)=>{return el.text }),
-                right: question.answer.map((el)=>{return el-1}),
-                isCreated:true
-            }
+        let variants2 = question.variants.correct.map((el)=>{return el.text});
+        variants1 = [...variants2, ...question.variants.other.map((el) => {return el.text})];
+        return {
+            type: QUESTION_TYPES.CHECK,
+            description: question.description,
+            variants: variants2,
+            right: question.variants.correct.map((el, idx)=>{return idx}),
+            isCreated:true
+        }
     }
 }
 
